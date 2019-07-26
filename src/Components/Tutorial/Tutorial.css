@@ -1,0 +1,69 @@
+#tuto{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+  background:#eee;
+  display:flex;
+  opacity:0;
+  transition:opacity 0.3s ease;
+  align-items:center;
+}
+
+.carousel{
+  height:80%;
+}
+.carousel-item{
+  text-align:left!important;
+  padding:0 20px;
+  display:inline-block;
+  overflow:unset;
+}
+.carousel-item > h5{
+  color:#555;
+  font-size:1.7em;
+  font-weight:550;
+}
+.carousel-item > p{
+  line-height:17px;
+  color:#555;
+  margin:5px 0 40px 0px;
+}
+.carousel-item > ul{
+  margin:40px 0;
+}
+.carousel-item > ul li{
+  display:flex;
+  justify-content:flex-start;
+  align-items:center;
+  line-height:16px;
+  margin-bottom:10px;
+  color:#777;
+}
+.carousel-item > ul li span{
+  background:#fff;
+  border-radius:5px;
+  padding:8px 10px;
+  margin-right:10px;
+  font-size:1.1em;
+  font-weight:550;
+}
+@keyframes gesture{
+ from{
+   opacity:0;
+   left:130px;
+ }
+ to{
+   opacity:1;
+   left:170px;
+}
+}
+#gest{
+  width:85px;
+  position:relative;
+  top:-85px;
+  left:170px;
+  animation:gesture 0.8s ease infinite;
+}
+

@@ -1,0 +1,117 @@
+#header{
+  background:url('./sidenav.jpg');
+  background-size:cover;
+  width:100%;
+  padding:20px 20px 15px 20px;
+  color:var(--icons);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:relative;
+}
+#header > h3{
+  text-overflow:scale;
+  max-font-size:1.3em;
+  min-font-size:1em;
+  font-weight:550;
+  line-height:25px;
+  text-shadow:0 0 10px rgba(0,0,0,.3);
+}
+#header > h3 > span{
+  font-size:0.6em;
+  color:#eee;
+}
+#header #main{
+  text-align:right;
+}
+#header #main #bans{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+}
+#header #main > span{
+  font-size:0.85em;
+  position:relative;
+  top:-10px;
+}
+#header #main #bans img{
+  width:45px;
+  margin-right:5px;
+}
+#header #main #bans h4{
+  color:#fff;
+  font-size:1.1em;
+  text-shadow:0 0 10px rgba(0,0,0,.3);
+}
+#header #main a{
+  background:var(--icons);
+  border-radius:5px;
+  margin-top:-7px;
+}
+#header #main > span{
+  text-shadow:0 0 10px rgba(0,0,0,.3)
+}
+#header #main a > span,#header #main a i{
+  color:var(--primary);
+}
+.yls{color:var(--warning);}
+.gls{color:var(--secondary);}
+.bls{color:var(--disable);}
+#all{
+  padding:20px;
+  overflow:hidden;
+}
+#all h3{
+  font-size:2em;
+  margin:0;
+  margin-bottom:20px;
+  color:var(--light);
+  font-weight:550;
+}
+#rights{
+  background:var(--divider);
+  color:#eee;
+  padding:10px 15px;
+  border-radius:5px;
+  box-shadow:0 05px 10px rgba(0,0,0,.05);
+  position:relative;
+  z-index:2;
+}
+#rights p{
+  font-weight:550;
+  margin:0;
+  line-height:15px!important;
+}
+.rss{
+  font-size:2.3em;
+  line-height:20px!important;
+}
+.rsd{
+  font-size:2.4em;
+  line-height:22px!important;
+}
+
+#swipeArea{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+  z-index:-1;
+  opacity:0;
+}
+#emptyCourses{
+  display:flex;
+  justify-content:flex-start;
+  align-items:center;
+}
+#emptyCourses > i{
+  font-size:7em;
+  color:#999;
+}
+#emptyCourses > p{
+  font-size:1.3em;
+  line-height:16px;
+  color:#777;
+}
+

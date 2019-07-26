@@ -1,0 +1,15 @@
+{
+  "short_name": "FIUSAC Horario",
+  "name": "FIUSAC Horario",
+  "icons": [
+    {
+      "src": "./img/icn.png",
+      "sizes": "255x255",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#2196F3",
+  "background_color": "#ffffff"
+}
