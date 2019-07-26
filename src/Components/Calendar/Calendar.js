@@ -29,23 +29,37 @@ class Calendar extends Component{
     this.tuto = React.createRef();
   }
   componentDidMount(){
-    function nextC(e){
-      let cp = e.state.normal;                                                         cp.setDate(cp.getDate()+1);                                                      e.setState({normal:cp});
-    }
-    function prevC(e){
-      let cp = e.state.normal;                                                         cp.setDate(cp.getDate()-1);                                                      e.setState({normal:cp})
-    }
-    SwipeListener(this.allCt.current);
     const mainDate = document.getElementById('mainDate');
+    const all = document.getElementById('all');
+    animDate();
+    function animDate(){
+      mainDate.style.transition="unset";
+      mainDate.style.opacity=0;
+      all.style.transition="unset";
+      all.style.opacity=0;
+      setTimeout(()=>{
+        mainDate.style.transition="opacity 0.3s ease";
+        mainDate.style.opacity=1;
+	all.style.transition="opacity 0.2s ease";
+        all.style.opacity=1;
+      }, 100);
+    }
+
+    function slide(e, dir){
+      let cp = e.state.normal;                                                         cp.setDate(cp.getDate()+dir);                                                    e.setState({normal:cp});
+      animDate();
+    }
     
+    SwipeListener(this.allCt.current);
     const classAct=this;
     mainDate.addEventListener('click', ()=>{
       classAct.setState({normal:new Date()});
+      animDate();
     });
-    this.allCt.current.addEventListener('swipe',e =>{ 
+    this.allCt.current.addEventListener('swipe',e =>{
       let directions = e.detail.directions;
-      if(directions.left) nextC(classAct);
-      if(directions.right) prevC(classAct);
+      if(directions.left) slide(classAct, 1);
+      if(directions.right) slide(classAct, -1);
     })
   }
   componentWillUnmount() {
