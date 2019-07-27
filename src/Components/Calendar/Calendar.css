@@ -112,6 +112,7 @@
 #emptyCourses > p{
   font-size:1.3em;
   line-height:16px;
-  color:#777;
+  font-weight:550;
+  color:#999;
 }
 

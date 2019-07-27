@@ -21,8 +21,12 @@ class Course extends Component{
   }
   componentDidMount(){
     let count=0;
-    this.allC.current.style.transitionDelay=`${this.props.count*0.1}s`;
-    this.allC.current.style.opacity=1
+   setTimeout(()=>{
+    this.allC.current.style.transitionDelay=`${this.props.count*0.07}s`;
+    this.allC.current.style.opacity=1;
+    this.allC.current.style.left=0;
+    setTimeout(()=>this.line.current.style.opacity=1,300);
+   },5);
     const compare_dates = (date1,date2) =>{
       if (date1<date2) return 1
       else if (date1.getHours()===date2.getHours() && date1.getMinutes()===date2.getMinutes()) return 2
@@ -80,7 +84,7 @@ class Course extends Component{
     if(!Number.isNaN(parseInt(title.split(' ')[2]))) parsed=true; 
     return( 
       <div class="allThem"><div class="mainLine" ref={this.line}></div>
-      <div ref={this.allC} class="content">
+      <div class="content" ref={this.allC}>
       <i class="material-icons" ref={this.dot}>fiber_manual_record</i>
       <div class='row valign-wrapper cp'>
 	<div id='pres'>
@@ -97,6 +101,7 @@ class Course extends Component{
       </div>
       </div>
       </div>
+	
       </div>
     )
   }

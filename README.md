@@ -1,4 +1,6 @@
 ## Install Node_Modules
+To run and build the app, you must install node dependencies 
+
 ### `npm install`
 
 ## Available Scripts

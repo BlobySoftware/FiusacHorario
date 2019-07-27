@@ -12,16 +12,16 @@
 }
 
 .carousel{
-  height:80%;
+  height:100%;
 }
 .carousel-item{
   text-align:left!important;
-  padding:0 20px;
+  padding:40px 20px;
   display:inline-block;
   overflow:unset;
 }
 .carousel-item > h5{
-  color:#555;
+  color:var(--primary);
   font-size:1.7em;
   font-weight:550;
 }
@@ -48,6 +48,12 @@
   margin-right:10px;
   font-size:1.1em;
   font-weight:550;
+}
+.indicator-item{
+  background:var(--light)!important;
+}
+.indicator-item.active{
+  background:var(--dark)!important;
 }
 @keyframes gesture{
  from{

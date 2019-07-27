@@ -57,6 +57,7 @@ class Calendar extends Component{
     const cMonth = this.months[this.state.normal.getMonth()];
     const tDate = this.state.normal.getDate();
     let fails = 0;
+    let counter = 0;
     return(
       <div ref={this.allCt}>
         <div id="header">
@@ -74,6 +75,7 @@ class Calendar extends Component{
            let days = [e.domingo, e.lunes, e.martes, e.miercoles, e.jueves, e.viernes, e.sabado].map(e=>{if(e===undefined) return false;else return true});
 	   
 	 if(days[this.state.normal.getDay()]){
+	   counter++;
 	   return(
           <Course
 	    name={e.nombre}
@@ -84,7 +86,7 @@ class Calendar extends Component{
 	    section={e.seccion}
 	    prof={e.catedratico}
 	    code={e.codigo}	
-	    count={i}
+	    count={counter}
 	  />)      
 	  }else fails++;
 	 })}
@@ -92,7 +94,7 @@ class Calendar extends Component{
             <i class="material-icons">assignment_late</i>
 	    <p>Descansa, para hoy no tienes ningún curso asignado.</p>
 	  </div>
-	  <div id='rights'><p>AlexSantos 2019 ®<br/>todos los derechos reservados.</p>
+	  <div id='rights'><p>FIUSAC Horario 2019 ®<br/>todos los derechos reservados.</p>
 	  </div>
         </section>
 	<div id="swipeArea"></div>
