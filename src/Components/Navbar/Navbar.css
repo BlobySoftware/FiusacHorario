@@ -88,3 +88,16 @@ nav .nav-wrapper .brand-logo span{
   padding:15px;
   z-index:11;
 }
+.autocomplete-content li .highlight{
+  color:var(--primary)!important;
+}
+.section-search input.autocomplete {
+  color: #000;
+}
+.input-field .prefix.active {
+  color: #000!important;
+}
+.dropdown-content li>a, .dropdown-content li>span {
+  color: #555!important;
+  text-transform:capitalize;
+}

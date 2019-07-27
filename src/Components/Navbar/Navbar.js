@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import './Navbar.css';
 import Tutorial from '../Tutorial/Tutorial';
+import CourseData from '../Calendar/courses.json';
 class Navbar extends Component{
   constructor(props){
     super(props);
@@ -10,6 +11,12 @@ class Navbar extends Component{
     this.openTut=this.openTut.bind(this);
     this.closeTut=this.closeTut.bind(this);
     this.state={tut:false};
+    this.courses={};
+    CourseData.map(e =>{
+     if(e.nombre !== undefined && e.nombre.length > 2) this.courses[e.nombre.toLowerCase()]=null;
+     if(e.catedratico !== undefined && e.catedratico.length > 2) this.courses[e.catedratico.toLowerCase()]=null;
+     return 0;
+    });
   }
   openTut(){ this.setState({tut:true}) };
   closeTut(){ this.setState({tut:false}) };
@@ -37,7 +44,11 @@ class Navbar extends Component{
   }
   componentDidMount(){
     const drop = document.querySelectorAll('.dropdown-trigger');
+    const searchInput = document.getElementById('search-input');
     M.Dropdown.init(drop);
+    M.Autocomplete.init(searchInput, {
+	data:this.courses
+    })
   }
   render(){
     const { location } = this.props

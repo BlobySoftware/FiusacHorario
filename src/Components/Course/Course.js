@@ -18,9 +18,11 @@ class Course extends Component{
     this.allC = React.createRef();
     this.dot= React.createRef();
     this.line=React.createRef();
+    this.badge = React.createRef();
   }
   componentDidMount(){
     let count=0;
+    const selected = this;
    setTimeout(()=>{
     this.allC.current.style.transitionDelay=`${this.props.count*0.07}s`;
     this.allC.current.style.opacity=1;
@@ -32,7 +34,18 @@ class Course extends Component{
       else if (date1.getHours()===date2.getHours() && date1.getMinutes()===date2.getMinutes()) return 2
       else if (date1>date2) return 3
       else return 4
+    }	
+
+    function setColor(c,sc){
+     selected.footer.current.style.background=c;
+      selected.titleName.current.style.color=c;
+      selected.titleNameS.current.style.color=c;
+      selected.dot.current.style.color=c;
+      selected.dot.current.style.transform=sc;
+      selected.line.current.style.background=c;
+      selected.badge.current.style.background=c;
     }
+
     this.ups=setInterval(()=>{
       const now = new Date();
       const res = compare_dates(now,this.timeStart);
@@ -42,31 +55,11 @@ class Course extends Component{
 	  count++
 	  if(count===1) alert(`${this.props.name} en ${this.props.room} del ${this.props.build}`);
 	}
-	this.footer.current.style.background='var(--secondary)';
-        this.titleName.current.style.color='var(--secondary)';
-        this.titleNameS.current.style.color='var(--secondary)';
-	this.dot.current.style.color="var(--secondary)";
-	this.dot.current.style.transform="scale(1.3,1.3)"
-	this.line.current.style.background='var(--secondary)';
+	setColor('var(--secondary)','scale(1.3,1.3)');
       }else if(res === 1){
-	const hours = (this.timeStart.getTime() - now.getTime())/(1000*60);
-        
-	if(hours <= 10){
-          this.footer.current.style.background='var(--warning)';
-          this.titleName.current.style.color='var(--warning)';
-          this.titleNameS.current.style.color='var(--warning)';
-	  this.dot.current.style.color="var(--warning)";
-	  this.dot.current.style.transform="scale(1.15,1.15)";
-	  this.line.current.style.background='var(--warning)';
-	}
-      }else{
-        this.footer.current.style.background='var(--disable)';
-        this.titleName.current.style.color='var(--disable)';
-	this.line.current.style.background='var(--disable)';
-	this.titleNameS.current.style.color='var(--disable)'
-	this.dot.current.style.color="var(--disable)";
-	this.dot.current.style.transform="scale(1,1)";
-      }
+	const hours = (this.timeStart.getTime() - now.getTime())/(1000*60);      
+	if(hours <= 10) setColor('var(--warning)','scale(1.15,1.15)');
+      }else setColor('var(--disable)','scale(1,1');
     },500);
   }
   componentWillUnmount(){
@@ -84,11 +77,12 @@ class Course extends Component{
     if(!Number.isNaN(parseInt(title.split(' ')[2]))) parsed=true; 
     return( 
       <div class="allThem"><div class="mainLine" ref={this.line}></div>
+      <span ref={this.badge} class={title.split(' ')[0]==='laboratorio'?'show composed':'hide'}>Laboratorio<br/></span>
       <div class="content" ref={this.allC}>
       <i class="material-icons" ref={this.dot}>fiber_manual_record</i>
       <div class='row valign-wrapper cp'>
 	<div id='pres'>
-	  <h4 class='title' ref={this.titleName}>{parsed?title.split(' ')[0]:title}<span class={parsed?'show':'hide'}><br/>{title.split(' ').slice(1.3).join(' ')}</span></h4>
+	  <h4 ref={this.titleName}>{title.split(' ')[0]==='laboratorio'?title.split(' ').slice(1,4).join(' '):parsed?title.split(' ')[0]:title}<span class={parsed?'show':'hide'}><br/>{title.split(' ').slice(1.3).join(' ')}</span></h4>
 	  <h5>{this.props.timeStart} - {this.props.timeEnd}</h5>
 	</div>
 	<div id='room'>

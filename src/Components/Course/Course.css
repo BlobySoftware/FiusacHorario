@@ -1,12 +1,12 @@
 .cp{
   background:#fff;
   border-radius:5px;
-  overflow:hidden;
+  
   box-shadow:0 05px 10px rgba(0,0,0,.2);
   margin:0;
   display:grid;
   width:100%;
-  grid-template-columns:60% auto;
+  grid-template-columns:auto 111px;
   grid-tenolate-rows:1fr 1fr;
   align-items:center;
 }
@@ -28,14 +28,30 @@ h4{
   color:var(--disable);
   font-weight:550;
 }
+.composed{
+  background:var(--disable);
+  padding:5px 15px;
+  display:inline-block;
+  color:var(--icons);
+  border-radius:5px;
+  text-align:center;
+  font-size:0.9em;
+  margin-bottom:10px;
+  font-weight:550;
+}
+.notN{
+  padding-top:10px;
+}
 h5{
-  font-size:1em;
-  color:#777;
+  font-size:0.9em;
+  color:#999;
+  font-weight:550;
 }
 #footer{
   background:var(--disable);
   padding:15px 15px;
   transition:all 0.3s ease;
+  border-radius:0 0 5px 5px;
 }
 #footer h5{
   color:#fff;
