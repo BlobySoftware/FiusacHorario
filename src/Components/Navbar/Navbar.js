@@ -15,7 +15,12 @@ class Navbar extends Component{
     CourseData.map(e =>{
      if(e.nombre !== undefined && e.nombre.length > 2) this.courses[e.nombre.toLowerCase()]=null;
      if(e.catedratico !== undefined && e.catedratico.length > 2) this.courses[e.catedratico.toLowerCase()]=null;
-     return 0;
+     if(e.codigo !== undefined && e.codigo.length > 0) this.courses["Código "+e.codigo] =  null;
+     if(e.seccion !== undefined && e.seccion.length > 0) this.courses["Sección "+e.seccion] =  null;
+     if(e.edificio !== undefined && e.edificio.length > 0) this.courses["Edificio "+e.edificio] =  null;
+     if(e.salon !== undefined && e.salon.length > 0) this.courses["Salón "+e.salon+" del Edificio "+e.edificio] =  null;
+     if(e.horaInicio !== undefined && e.horaInicio.length > 0) this.courses["Empieza a las "+e.horaInicio+" termina a las "+e.horaFinal] =  null;
+
     });
   }
   openTut(){ this.setState({tut:true}) };

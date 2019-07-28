@@ -101,3 +101,7 @@ nav .nav-wrapper .brand-logo span{
   color: #555!important;
   text-transform:capitalize;
 }
+.dropdown-content{
+  width:100%!important;
+
+}
