@@ -52,7 +52,10 @@ h5{
   padding:15px 15px;
   transition:all 0.3s ease;
   border-radius:0 0 5px 5px;
+  position:relative;
+  overflow:hidden;
 }
+
 #footer h5{
   color:#fff;
   font-weight:550;

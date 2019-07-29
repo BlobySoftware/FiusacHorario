@@ -10,6 +10,20 @@ class Sidenav extends Component{
     let s = M.Sidenav.init(list);
     let route = window.location.pathname.substr(1);
     let sBtn = document.querySelectorAll('.sBtn');
+    
+    let shareBtn = document.querySelector(".shareBtn");
+    shareBtn.addEventListener("click", () =>{
+	if (navigator.share) {
+  	  navigator.share({
+      	  title: 'FIUSAC (Helper)',
+	  text: 'Prueba esta aplicación 😀 ',
+     	  url: window.location
+  	})
+        .then(() => console.log('Successful share'))
+        .catch((error) => console.log('Error sharing', error));
+	}else alert('Tu navegador no es compatible');
+     })
+
     for(let i = 0;i<2;i++){
       sBtn[i].classList.remove('active');
       sBtn[i].addEventListener('click', e => {

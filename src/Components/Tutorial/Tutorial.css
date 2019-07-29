@@ -21,7 +21,7 @@
   overflow:unset;
 }
 .carousel-item > h5{
-  color:var(--primary);
+  color:#555;
   font-size:1.7em;
   font-weight:550;
 }
@@ -50,10 +50,10 @@
   font-weight:550;
 }
 .indicator-item{
-  background:var(--light)!important;
+  background:#999!important;
 }
 .indicator-item.active{
-  background:var(--dark)!important;
+  background:#555!important;
 }
 @keyframes gesture{
  from{

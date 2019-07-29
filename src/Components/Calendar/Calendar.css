@@ -2,6 +2,7 @@
   background:url('./sidenav.jpg');
   background-size:cover;
   width:100%;
+  height:100px;
   padding:20px 20px 15px 20px;
   color:var(--icons);
   display:flex;
@@ -31,14 +32,15 @@
   justify-content:flex-end;
   align-items:center;
 }
-#header #main > span{
-  font-size:0.85em;
+#header #main #bans h4 > span{
+  font-size:0.7em;
   position:relative;
-  top:-10px;
+  color:#ddd;
 }
 #header #main #bans img{
-  width:45px;
+  width:48px;
   margin-right:5px;
+  margin-top:-5px;
 }
 #header #main #bans h4{
   color:#fff;
@@ -118,5 +120,13 @@
   line-height:16px;
   font-weight:550;
   color:#999;
+}
+#band{
+  position:relative;
+  top:0;
+  width:100%;
+  height:5px;
+  background:var(--icons);
+  box-shadow:0 0 10px rgba(0,0,0,.3);
 }
 

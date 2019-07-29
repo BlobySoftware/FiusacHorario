@@ -78,12 +78,12 @@ class Calendar extends Component{
 	  <h3 id="mainDate" class={today==='Miércoles'?'rss':today==='Domingo'?'rsd':'exp'}>{today} <br/><span>{cMonth} {tDate}</span></h3>
 	  <div id="main">
 	    <div id="bans">
-	    <img src={Logo} alt="Logo FIUSAC"/>
-	    <h4>Facultad de<br/>Ingeniería</h4>
+	      <img src={Logo} alt="Logo FIUSAC"/>
+	      <h4>Facultad de<br/>Ingeniería<br/><span>Semestre II {year}</span></h4>
 	    </div>
-            <span>Semestre II {year}</span><br/>
 	  </div>
 	</div>
+	<div id="band"></div>
 	<section id='all'>
 	 {this.current.map((e,i)=>{
            let days = [e.domingo, e.lunes, e.martes, e.miercoles, e.jueves, e.viernes, e.sabado].map(e=>{if(e===undefined) return false;else return true});

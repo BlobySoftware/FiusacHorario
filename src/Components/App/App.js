@@ -15,14 +15,14 @@ class App extends Component {
       <main>
         <BrowserRouter>
           <div>
-            <Sidenav />
+	    <Sidenav />
 	    <Navbar />
-	    <Floating />
 	    <Route exact path="/" component={Home}/>
             <Route exact path="/horario" component={Calendar}/>
 	    <Route exact path="/tutorial" component={Tutorial}/>
           </div>
         </BrowserRouter>
+	<Floating />
       </main>
     )}
 }

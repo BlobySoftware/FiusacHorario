@@ -5,7 +5,7 @@ nav{
   width:100%;
   z-index:10;
   display:block;
-  background:linear-gradient(to right,var(--primary),var(--dark));
+  background:var(--primary);
 }
 nav .nav-wrapper{
   position:relative;

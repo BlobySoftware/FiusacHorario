@@ -7,7 +7,7 @@ class Home extends Component{
       window.localStorage.setItem('courses',JSON.stringify(items));
   }
   render(){
-    return(<h5>Hola</h5>)
+    return(<h5>Pagina de inicio.</h5>)
   }
 }
 
