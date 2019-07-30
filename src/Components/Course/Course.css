@@ -1,7 +1,6 @@
 .cp{
   background:#fff;
   border-radius:5px;
-  
   box-shadow:0 05px 10px rgba(0,0,0,.2);
   margin:0;
   display:grid;
@@ -55,7 +54,6 @@ h5{
   position:relative;
   overflow:hidden;
 }
-
 #footer h5{
   color:#fff;
   font-weight:550;
@@ -63,7 +61,6 @@ h5{
 #footer h5 span{
   font-weight:400;
 }
-
 h5,h4{
   text-transform:capitalize;
   transition:color 0.3s ease;
@@ -74,7 +71,6 @@ h5,h4{
   justify-content:space-between;
   margin-bottom:20px;
   position:relative;
-  opacity:0;
   transition:all 0.3s ease;
   left:-100px;
 }
@@ -86,15 +82,14 @@ h5,h4{
 }
 .mainLine{
   width:2px;
-  height:calc(100% + 40px);
+  height:0;
   position:absolute;
   left:11px;
   top:-20px;
   background:var(--disable);
-  opacity:0;
   transition:all 0.3s ease;
 }
-
 .allThem{
   position:relative;
 }
+

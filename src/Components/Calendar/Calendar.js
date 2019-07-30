@@ -1,79 +1,93 @@
 import React, { Component } from 'react';
 import SwipeListener from 'swipe-listener';
-import './Calendar.css';
-import 'materialize-css/dist/css/materialize.min.css';
 import Logo from './fiusac.png';
 import CourseData from './courses.json';
 import Course from '../Course/Course';
+import './Calendar.css';                                                         
+import 'materialize-css/dist/css/materialize.min.css';
 
 class Calendar extends Component{
-  constructor(props){
-    super(props);
-    const courses = JSON.parse(window.localStorage.getItem('courses'));
+  constructor(props){ super(props)
+    //Get objects from Courses.json
     this.current=[];
-    CourseData.map((e,p)=>{
+    const courses = JSON.parse(window.localStorage.getItem('courses'));
+    //Map courses to filter by code and section
+    CourseData.map( (e,p)=>{
       return courses.map(i=>{
 	if(e.codigo === i.codigo.toString() && e.seccion === i.seccion) this.current.push(e);
 	return e
       })
-    });
+    })
+    //Sort by Time
     this.current.sort( (a,b) =>{
 	const as = a.horaInicio.split(':');
 	const bs = b.horaInicio.split(':');
 	return (parseInt(as[0]) + parseInt(as[1]/100)) - (parseInt(bs[0]) + parseInt(bs[1]/100)) 
     })
-   this.months=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+    //Global Variables
+    this.months=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
     this.dd=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+    //States and Refs
     this.state={normal:new Date()}
     this.allCt=React.createRef();
     this.tuto = React.createRef();
   }
   componentDidMount(){
+    //Select Date Text and Courses list to animate
     const mainDate = document.getElementById('mainDate');
     const all = document.getElementById('all');
+    const classAct = this;
+    //Main animations
     animDate();
-    function animDate(){
+    function animDate(dir){
       mainDate.style.transition="unset";
       mainDate.style.opacity=0;
       all.style.transition="unset";
       all.style.opacity=0;
+      all.style.left=`${dir*100}px`;
       setTimeout(()=>{
-        mainDate.style.transition="opacity 0.3s ease";
+        mainDate.style.transition="all 0.3s ease";
         mainDate.style.opacity=1;
-	all.style.transition="opacity 0.2s ease";
+	all.style.transition="all 0.2s ease";
         all.style.opacity=1;
+	all.style.left=0;
       }, 100);
     }
-
+    //Add one day to date and anim courses
     function slide(e, dir){
-      let cp = e.state.normal;                                                         cp.setDate(cp.getDate()+dir);                                                    e.setState({normal:cp});
-      animDate();
+      let cp = e.state.normal;                                                         
+      cp.setDate(cp.getDate()+dir);                                                   
+      e.setState({normal:cp});
+      animDate(dir);
     }
-    
+    //Swipe Event
     SwipeListener(this.allCt.current);
-    const classAct=this;
-    mainDate.addEventListener('click', ()=>{
-      classAct.setState({normal:new Date()});
-      animDate();
-    });
+
     this.allCt.current.addEventListener('swipe',e =>{
       let directions = e.detail.directions;
       if(directions.left) slide(classAct, 1);
       if(directions.right) slide(classAct, -1);
     })
+    //Reset date
+    mainDate.addEventListener('click', () =>{
+      classAct.setState({normal:new Date()})
+      animDate();
+    });
   }
-  componentWillUnmount() {
-    clearInterval(this.timer);
-  }
+
+  componentWillUnmount(){clearInterval(this.timer);}
+
   render(){
+    //Parse dates format
     const year = this.state.normal.getFullYear();
     const today =  this.dd[this.state.normal.getDay()]
     const cMonth = this.months[this.state.normal.getMonth()];
     const tDate = this.state.normal.getDate();
     let fails = 0;
     let counter = 0;
+
     return(
-      <div ref={this.allCt}>
+      <div ref={this.allCt} id="ctp">
         <div id="header">
 	  <h3 id="mainDate" class={today==='Miércoles'?'rss':today==='Domingo'?'rsd':'exp'}>{today} <br/><span>{cMonth} {tDate}</span></h3>
 	  <div id="main">
@@ -91,17 +105,17 @@ class Calendar extends Component{
 	 if(days[this.state.normal.getDay()]){
 	   counter++;
 	   return(
-          <Course
-	    name={e.nombre}
-	    timeStart={e.horaInicio}
-	    timeEnd={e.horaFinal}
-	    room={e.salon}
-	    build={e.edificio}
-	    section={e.seccion}
-	    prof={e.catedratico}
-	    code={e.codigo}	
-	    count={counter}
-	  />)      
+            <Course
+	      name={e.nombre}
+	      timeStart={e.horaInicio}
+	      timeEnd={e.horaFinal}
+	      room={e.salon}
+	      build={e.edificio}
+	      section={e.seccion}
+	      prof={e.catedratico}
+	      code={e.codigo}	
+	      count={counter}
+	    />)      
 	  }else fails++;
 	 })}
 	  <div id="emptyCourses" class={fails===6?'show':'hide'}>

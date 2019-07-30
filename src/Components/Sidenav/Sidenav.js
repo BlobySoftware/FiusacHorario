@@ -6,24 +6,25 @@ import './Sidenav.css';
 
 class Sidenav extends Component{
   componentDidMount(){
-    let list = document.querySelector('.sidenav');
-    let s = M.Sidenav.init(list);
-    let route = window.location.pathname.substr(1);
-    let sBtn = document.querySelectorAll('.sBtn');
-    
-    let shareBtn = document.querySelector(".shareBtn");
+    //Init side nav
+    const list = document.querySelector('.sidenav');
+    const route = window.location.pathname.substr(1);
+    const sBtn = document.querySelectorAll('.sBtn');
+    const shareBtn = document.querySelector(".shareBtn");
+    const s = M.Sidenav.init(list)
+    //Share application
     shareBtn.addEventListener("click", () =>{
-	if (navigator.share) {
-  	  navigator.share({
+      if (navigator.share) {
+  	navigator.share({
       	  title: 'FIUSAC (Helper)',
 	  text: 'Prueba esta aplicación 😀 ',
      	  url: window.location
-  	})
+        })
         .then(() => console.log('Successful share'))
         .catch((error) => console.log('Error sharing', error));
-	}else alert('Tu navegador no es compatible');
+	} else alert('Tu navegador no es compatible');
      })
-
+    //Styles active route
     for(let i = 0;i<2;i++){
       sBtn[i].classList.remove('active');
       sBtn[i].addEventListener('click', e => {
@@ -33,10 +34,10 @@ class Sidenav extends Component{
 	s.close();
       })
       let btnText = sBtn[i].innerHTML.substr(sBtn[i].innerHTML.indexOf('i>')+2,sBtn[i].innerHTML.length-sBtn[i].innerHTML.indexOf('i>')-6);
-      if(route===btnText.toLowerCase()){
-        sBtn[i].classList.add('active');
-      }else if(route === '') sBtn[0].classList.add('active');
+      if(route===btnText.toLowerCase()) sBtn[i].classList.add('active');
+      else if(route === '') sBtn[0].classList.add('active');
     }
+    //Service worker install button
     let deferredPrompt;
     const addBtn = document.querySelector('.add-button');
     addBtn.style.display = 'none';
@@ -110,7 +111,7 @@ class Sidenav extends Component{
 	  </a>
 	</li>
       </ul> 
-    );
+    )
   }
 }
 

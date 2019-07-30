@@ -10,7 +10,6 @@
   transition:opacity 0.3s ease;
   align-items:center;
 }
-
 .carousel{
   height:100%;
 }
@@ -56,14 +55,8 @@
   background:#555!important;
 }
 @keyframes gesture{
- from{
-   opacity:0;
-   left:130px;
- }
- to{
-   opacity:1;
-   left:170px;
-}
+ from{opacity:0;left:130px;}
+ to{opacity:1;left:170px;}
 }
 #gest{
   width:85px;

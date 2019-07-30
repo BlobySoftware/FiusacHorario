@@ -27,7 +27,7 @@ class Floating extends Component{
 	  </li>
         </ul>
       </div>
-    );
+    )
   }
 }
 
