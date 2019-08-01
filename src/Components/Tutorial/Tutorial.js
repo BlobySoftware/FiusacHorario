@@ -18,7 +18,6 @@ class Tutorial extends Component{
       noWrap:true
     }); 
   }
-
   render(){
     return(
       <div id="tuto">   
@@ -26,18 +25,6 @@ class Tutorial extends Component{
 	  <div class="carousel-item">                                           
 	    <h5>Estado del curso</h5>                      
 	    <p>El comportamiento de cada curso cambia su color en su estado actual, los colores se interpretan de la siguiente manera:</p>             
-	    <Course
-	      name='Nombre | Curso'                                        
-	      timeStart='Inicio'                             
-	      timeEnd='Final'                                
-	      room='N#'                                      
-	      build='#'                                      
-	      section='#'                                    
-	      prof='Nombre de Catedratico'                   
-	      days={[true,true,true,true,true,true,true]}
-	      today={new Date()}                      
-	      count={1}
-            />
             <ul>
               <li><span class="bls">Inactivo</span> Indica un curso no proximo en el tiempo o ya finalizado.</li>
               <li><span class="yls">Proximo</span> Indica un curso que esta por empezar en menos de 10 minutos.</li>

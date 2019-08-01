@@ -29,9 +29,6 @@
   color:#555;
   margin:5px 0 40px 0px;
 }
-.carousel-item > ul{
-  margin:40px 0;
-}
 .carousel-item > ul li{
   display:flex;
   justify-content:flex-start;
@@ -41,7 +38,7 @@
   color:#777;
 }
 .carousel-item > ul li span{
-  background:#fff;
+  color:#fff;
   border-radius:5px;
   padding:8px 10px;
   margin-right:10px;
@@ -64,5 +61,8 @@
   top:-85px;
   left:170px;
   animation:gesture 0.8s ease infinite;
+  z-index:3;
 }
-
+.yls{background:var(--warning);}
+.gls{background:var(--secondary);}
+.bls{background:var(--disable);}

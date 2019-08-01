@@ -36,29 +36,34 @@ class Calendar extends Component{
     //Select Date Text and Courses list to animate
     const mainDate = document.getElementById('mainDate');
     const all = document.getElementById('all');
+    const timeLine = document.getElementById('timeLine');
     const classAct = this;
     //Main animations
-    animDate();
+    animDate(-1);
     function animDate(dir){
-      mainDate.style.transition="unset";
-      mainDate.style.opacity=0;
-      all.style.transition="unset";
+      mainDate.style.transition="none";
       all.style.opacity=0;
+      mainDate.style.opacity=0;
+      all.style.transition="none";
+      timeLine.style.transition="none";
+      timeLine.style.height=0;
       all.style.left=`${dir*100}px`;
       setTimeout(()=>{
-        mainDate.style.transition="all 0.3s ease";
-        mainDate.style.opacity=1;
-	all.style.transition="all 0.2s ease";
+	mainDate.style.transition="opacity 0.45s ease";
+	all.style.transition="left 0.15s, opacity 0.45s";
+	timeLine.style.transition="height 0.5s ease";
         all.style.opacity=1;
+	mainDate.style.opacity=1;
 	all.style.left=0;
-      }, 100);
+      },150);
+      setTimeout(()=>timeLine.style.height='calc(100% - 40px)',400);
     }
     //Add one day to date and anim courses
     function slide(e, dir){
       let cp = e.state.normal;                                                         
-      cp.setDate(cp.getDate()+dir);                                                   
-      e.setState({normal:cp});
+      cp.setDate(cp.getDate()+dir);       
       animDate(dir);
+      e.setState({normal:cp})
     }
     //Swipe Event
     SwipeListener(this.allCt.current);
@@ -115,9 +120,11 @@ class Calendar extends Component{
 	      prof={e.catedratico}
 	      code={e.codigo}	
 	      count={counter}
+	      days={days}
 	    />)      
 	  }else fails++;
 	 })}
+	  <div id="timeLine" class={fails===6?'hide':'show'}></div>
 	  <div id="emptyCourses" class={fails===6?'show':'hide'}>
             <i class="material-icons">assignment_late</i>
 	    <p>Descansa, para hoy no tienes ningún curso asignado.</p>

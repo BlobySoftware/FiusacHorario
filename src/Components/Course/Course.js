@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CourseExpanded from '../CourseExpanded/CourseExpanded';
 import './Course.css';
 
 class Course extends Component{
@@ -20,18 +21,40 @@ class Course extends Component{
     this.dot= React.createRef();
     this.line=React.createRef();
     this.badge = React.createRef();
+    this.ct = React.createRef();
+    this.detailsRef = React.createRef();
+    //Open details
     this.safe = false;
+    this.details = false;
+    this.openDetails=this.openDetails.bind(this);
+    this.closeDetails=this.closeDetails.bind(this)
+    this.control = true;
   }
+
+  openDetails = () => {
+    const details = this.detailsRef.current;
+    this.details = true;
+    details.classList.remove('hide')
+    setTimeout(()=>{
+	details.style.opacity=1;
+	this.ct.current.style.zIndex=10
+    },50);
+  }
+  closeDetails = () => {
+    const details = this.detailsRef.current;
+    this.details = false;
+    details.style.opacity=0;
+    setTimeout(()=>{
+      details.classList.add('hide')
+      this.ct.current.style.zIndex=1
+    },300);
+  }
+
   componentDidMount(){
     const selected = this;
     let count = 0
     this.safe = true;
-    //Enter animation
-    setTimeout(()=>{
-      this.allC.current.style.transitionDelay=`${this.props.count*0.07}s`;
-      this.allC.current.style.left=0;
-      setTimeout(()=>this.line.current.style.height="calc(100% + 40px)",500);
-    },5);	
+    	
     //Difference between two dates (Get Minutes)
     const compare_dates = (date1,date2) =>{
       if (date1<date2) return 1
@@ -46,11 +69,16 @@ class Course extends Component{
       selected.titleNameS.current.style.color=c;
       selected.dot.current.style.color=c;
       selected.dot.current.style.transform=sc;
-      selected.line.current.style.background=c;
       selected.badge.current.style.background=c;
+      if(c!=="var(--disable)") {
+	if(selected.details) selected.ct.current.style.zIndex=10;
+	else selected.ct.current.style.zIndex=2;
+        selected.line.current.style.background=c;
+      }else selected.line.current.style.background="transparent";
     }
     //Evaluate time
     this.ups=setInterval(()=>{
+    if(this.control){
       const now = new Date();
       const res = compare_dates(now,this.timeStart);
       const resEnd = compare_dates(now,this.timeEnd);
@@ -64,7 +92,8 @@ class Course extends Component{
       }else if(res === 1){
 	const hours = (this.timeStart.getTime() - now.getTime())/(1000*60);      
 	if(hours <= 10) setColor('var(--warning)','scale(1.15,1.15)');
-      }else setColor('var(--disable)','scale(1,1');
+      }else setColor('var(--disable)','scale(1,1)');
+    }
     },500);
   }
   componentWillUnmount(){
@@ -85,16 +114,32 @@ class Course extends Component{
     if(!Number.isNaN(parseInt(title.split(' ')[2]))) parsed=true;
     //Animate component if its mounted
     if(this.safe){
-      this.allC.current.style.transitionDelay=`0s`;
-      this.allC.current.style.transform="scale(1.1,1.1)";
-      setTimeout(()=>this.allC.current.style.transform="scale(1,1)",300);
+      this.detailsRef.current.classList.add('hide');
+      this.line.current.style.background="transparent";
+      this.control = false;
+      setTimeout(()=>this.control = true,300);
+      this.closeDetails();
     }
-	
     return( 
-      <div class="allThem">
+      <div class="allThem" ref={this.ct}>
+	<div class={this.details?'details':'details hide'} ref={this.detailsRef}>
+	<div class="shadow" onClick={this.closeDetails}></div>
+        <i class='material-icons closeDetails' onClick={this.closeDetails}>close</i>
+	  <CourseExpanded
+	    name={this.props.name}
+	    timeStart={this.props.timeStart}
+	    timeEnd={this.props.timeEnd}
+	    room={this.props.room}
+	    build={this.props.build}
+	    section={this.props.section}
+	    code={this.props.code}
+	    prof={this.props.prof}
+	    days={this.props.days}
+	  />
+	</div>
 	<div class="mainLine" ref={this.line}></div>
       	<span ref={this.badge} class={title.split(' ')[0]==='laboratorio'?'show composed':'hide'}>Laboratorio<br/></span>
-      	<div class="content" ref={this.allC}>
+      	<div class="content" ref={this.allC} onClick={this.openDetails}>
       	  <i class="material-icons" ref={this.dot}>fiber_manual_record</i>
 	  <div class='row valign-wrapper cp'>
 	    <div id='pres'>

@@ -28,7 +28,13 @@ class Navbar extends Component{
 
   //Bind to tutorial component
   openTut(){ this.setState({tut:true}) };
-  closeTut(){ this.setState({tut:false}) };
+  closeTut(){
+    const tuts = document.getElementById('tuto');
+    const closeT = document.querySelector('.closeT');
+    closeT.classList.add('hide');
+    tuts.style.opacity=0;
+    setTimeout(()=>this.setState({tut:false}),300);
+  };
 
   openSearch(){
     //Selecr input field

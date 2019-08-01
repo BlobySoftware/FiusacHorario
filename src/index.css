@@ -1,7 +1,7 @@
 body {
   --primary:#2196F3;
   --secondary:#8BC34A;
-  --warning:#FFD54F;
+  --warning:#FFC400;
   --accent:rgb(80,80,80);
   --icons:#FFFFFF;
   --light:#64B5F6;
@@ -26,6 +26,7 @@ body {
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color:transparent;
   -webkit-user-drag:none;
+  overflow-x:hidden;
 }
 @media screen and (min-width:420px){
   body{display:none;}

@@ -17,7 +17,6 @@
   font-weight:550;
   line-height:25px;
   text-shadow:0 0 10px rgba(0,0,0,.3);
-  opacity:0;
   transition:opacity 0.3s ease;
 }
 #header > h3 > span{
@@ -59,17 +58,11 @@
   color:var(--primary);
 }
 
-.yls{color:var(--warning);}
-.gls{color:var(--secondary);}
-.bls{color:var(--disable);}
-
 #all{
   padding:20px;
-  overflow:hidden;
-  opacity:0;
-  transition:all 0.3s ease;
+  transition:all 0.2s ease;
   position:relative;
-  left:100px;
+  left:0;
 }
 #all h3{
   font-size:2em;
@@ -134,4 +127,13 @@
 }
 #ctp{
   overflow:hidden;
+}
+#timeLine{
+  position:absolute;
+  top:0;
+  width:2px;
+  left:31px;
+  height:0;
+  background:var(--disable);
+  transition:height 0.3s ease;
 }
