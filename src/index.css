@@ -28,6 +28,10 @@ body {
   -webkit-user-drag:none;
   overflow-x:hidden;
 }
+.toast{
+  font-weight:500!important;
+}
+
 @media screen and (min-width:420px){
   body{display:none;}
 }

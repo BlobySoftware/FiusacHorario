@@ -5,6 +5,7 @@ import Navbar from '../Navbar/Navbar';
 import Floating from '../Floating/Floating';
 import Calendar from '../Calendar/Calendar';
 import Home from '../Home/Home';
+import Search from '../Search/Search';
 import Tutorial from '../Tutorial/Tutorial';
 import './App.css';
 import 'material-design-icons/iconfont/material-icons.css';
@@ -18,9 +19,10 @@ class App extends Component {
           <div>
 	    <Sidenav />
 	    <Navbar />
-	    <Route exact path="/" component={Home} />
-            <Route exact path="/horario" component={Calendar} />
-	    <Route exact path="/tutorial" component={Tutorial} />
+	      <Route exact path="/" component={Home} />
+              <Route exact path="/horario" component={Calendar} />
+	      <Route exact path="/tutorial" component={Tutorial} />
+	      <Route path="/buscar/:id" render={props => (<Search keyword={props.match.params.id}/>)}/>
           </div>
         </BrowserRouter>
 	<Floating />

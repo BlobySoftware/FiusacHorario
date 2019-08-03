@@ -1,0 +1,29 @@
+#allSrc{
+  position:relative;
+  padding:20px;
+}
+#allOneSrc{
+  position:relative;
+  padding:0px;
+  z-index:1;
+}
+#srcTitle{
+  position:relative;
+  text-transform:none;
+  color:#eee;
+  width:100%;
+  padding:20px;
+  background:#888;
+  font-weight:550;
+  font-size:1.4em;
+  z-index:2;
+}
+#srcTitle h4{
+  font-size:0.7em;
+  color:#fff;
+  color:#ccc;
+  text-transform:none;
+}
+.timeLine{
+  height:calc(100% - 40px)!important;
+}

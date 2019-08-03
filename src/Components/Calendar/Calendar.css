@@ -71,7 +71,7 @@
   color:var(--light);
   font-weight:550;
 }
-#rights{
+.rights{
   background:var(--divider);
   color:#eee;
   padding:10px 15px;
@@ -80,7 +80,7 @@
   position:relative;
   z-index:2;
 }
-#rights p{
+.rights p{
   font-weight:550;
   margin:0;
   line-height:15px!important;
@@ -128,7 +128,7 @@
 #ctp{
   overflow:hidden;
 }
-#timeLine{
+.timeLine{
   position:absolute;
   top:0;
   width:2px;

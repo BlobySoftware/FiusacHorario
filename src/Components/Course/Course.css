@@ -97,11 +97,12 @@ h5,h4{
   top:56px;
   right:0;
   margin:20px;
-  padding:5px;
+  padding:7px;
   border-radius:100%;
   z-index:4;
   color:#fff;
   background:var(--accent);
+  font-size:1.3em!important;
 }
 .details{
   position:fixed;

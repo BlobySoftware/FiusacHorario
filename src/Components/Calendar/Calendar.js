@@ -36,7 +36,7 @@ class Calendar extends Component{
     //Select Date Text and Courses list to animate
     const mainDate = document.getElementById('mainDate');
     const all = document.getElementById('all');
-    const timeLine = document.getElementById('timeLine');
+    const timeLine = document.querySelector('.timeLine');
     const classAct = this;
     //Main animations
     animDate(-1);
@@ -124,12 +124,12 @@ class Calendar extends Component{
 	    />)      
 	  }else fails++;
 	 })}
-	  <div id="timeLine" class={fails===6?'hide':'show'}></div>
+	  <div class={fails===6?'hide':'show timeLine'}></div>
 	  <div id="emptyCourses" class={fails===6?'show':'hide'}>
             <i class="material-icons">assignment_late</i>
 	    <p>Descansa, para hoy no tienes ningún curso asignado.</p>
 	  </div>
-	  <div id='rights'><p>FIUSAC Horario 2019 ®<br/>todos los derechos reservados.</p>
+	  <div class='rights'><p>FIUSAC Horario 2019 ®<br/>todos los derechos reservados.</p>
 	  </div>
         </section>
 	<div id="swipeArea"></div>
