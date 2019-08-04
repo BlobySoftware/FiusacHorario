@@ -124,7 +124,7 @@ class Calendar extends Component{
 	    />)      
 	  }else fails++;
 	 })}
-	  <div class={fails===6?'hide':'show timeLine'}></div>
+	  <div class={fails===6?'hide timeLine':'show timeLine'}></div>
 	  <div id="emptyCourses" class={fails===6?'show':'hide'}>
             <i class="material-icons">assignment_late</i>
 	    <p>Descansa, para hoy no tienes ningún curso asignado.</p>
