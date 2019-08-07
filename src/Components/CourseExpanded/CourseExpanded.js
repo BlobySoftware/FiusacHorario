@@ -60,7 +60,7 @@ class CourseExpanded extends Component{
 	<h6 class="docExp">{this.props.prof.toLowerCase()}</h6>
 	<h6 class="secExp">Sección {this.props.section}</h6>
 	<h6 class="secExp">Código {this.props.code}</h6>
-	<span class={this.state.sSchedule?'hide addCourse':'btn bHand waves-effect addCourse'} ref={this.addC} ><i class="material-icons left">add</i><span class="right">Agregar curso</span></span>
+	<span class={this.state.isSchedule?'hide addCourse':'btn bHand waves-effect addCourse'} ref={this.addC} ><i class="material-icons left">add</i><span class="right">Agregar curso</span></span>
 	<span class={!this.state.isSchedule?'hide removeCourse':'btn bHand red waves-effect removeCourse'} ref={this.remC}><i class="material-icons left">delete</i><span class="right">Remover curso</span></span>
 	<h3 class="placeExp">Tiempo:</h3>
 	<p>Los dias: <br/><span>{this.props.days.map((e,i) =>{
