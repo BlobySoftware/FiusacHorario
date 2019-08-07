@@ -54,9 +54,9 @@
  to{opacity:1;left:170px;}
 }
 #gest{
-  width:50px;
+  width:65px;
   position:relative;
-  top:-75px;
+  top:-95px;
   left:170px;
   animation:gesture 0.8s ease infinite;
   z-index:3;
@@ -76,7 +76,7 @@
   width:100%;
 }
 #detailsTutorial > img{
-  width:53%;
+  width:55%;
 }
 #detailsTutorial > p{
   text-align:right;

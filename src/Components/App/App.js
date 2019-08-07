@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Sidenav from '../Sidenav/Sidenav';
 import Navbar from '../Navbar/Navbar';
 import Floating from '../Floating/Floating';
@@ -19,10 +19,12 @@ class App extends Component {
           <div>
 	    <Sidenav />
 	    <Navbar />
+	    <Switch>
 	      <Route exact path="/" component={Home} />
               <Route exact path="/horario" component={Calendar} />
 	      <Route exact path="/tutorial" component={Tutorial} />
 	      <Route path="/buscar/:id" render={props => (<Search keyword={props.match.params.id}/>)}/>
+	   </Switch>
           </div>
         </BrowserRouter>
 	<Floating />

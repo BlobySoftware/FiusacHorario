@@ -32,6 +32,7 @@ class Course extends Component{
   }
 
   openDetails = () => {
+    //Open CourseExpanded component
     const details = this.detailsRef.current;
     this.details = true;
     details.classList.remove('hide')
@@ -41,6 +42,7 @@ class Course extends Component{
     },50);
   }
   closeDetails = () => {
+    //Close CourseExpanded component
     const details = this.detailsRef.current;
     this.details = false;
     details.style.opacity=0;

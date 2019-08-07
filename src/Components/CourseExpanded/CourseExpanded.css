@@ -46,3 +46,14 @@
   margin-top:20px;
   width:100%;
 }
+.bHand{
+  margin-top:15px;
+  font-weight:550;
+}
+.bHand > i{
+  margin-top:-1px;
+  margin-right:3px;
+}
+.addCourse{
+  background:var(--primary)!important;
+}

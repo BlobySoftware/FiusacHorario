@@ -61,19 +61,19 @@ class Sidenav extends Component{
       <ul class="sidenav" id="side1">
         <li>
           <div class="user-view">
-	    <a role="button" class="userInfo">
+	    <span role="button" class="userInfo">
 	      <span class="name">FIUSAC Horario</span>
 	      <span class="email">Version beta v0.67</span>
-	    </a>
+	    </span>
 	  </div>
 	</li>
 	<Link to="/"><li class="sBtn homeBtn">
-          <a role="button" class="waves-effect">
+          <a href="#toHome" class="waves-effect">
             <i class="material-icons">home</i>Inicio
           </a>
         </li></Link>
 	<Link to="/horario"><li class="sBtn shBtn">
-          <a role="button" class="waves-effect">
+          <a href="#toSchedule" class="waves-effect">
             <i class="material-icons">today</i>Horario
           </a>
         </li></Link>
@@ -81,32 +81,32 @@ class Sidenav extends Component{
 	  <div class="divider"></div>
 	</li>
 	<li>
-	  <a class="subheader" href="#!">Applicación</a>
+	  <a href="#div" class="subheader disable">Applicación</a>
 	</li> 
 	<div id="accountSection">
-	<li>
-	  <a role="button" class="waves-effect">
+	<li class="sBtn config">
+	  <a href="#c" class="waves-effect">
 	    <i class="material-icons">settings</i>Configuracion
 	  </a>
 	</li>	
-	<li>
-	  <a role="button" id="logout" class="waves-effect">
+	<li class="sBtn logout">
+	  <a href="#logout" id="logout" class="waves-effect">
 	    <i class="material-icons">logout</i>Cerrar sesión
 	  </a>
 	</li>
 	</div>
 	<li class="sBtn login">
-	  <a role="button" id="login" class="waves-effect">
+	  <a href="#login" id="login" class="waves-effect">
 	    <i class="material-icons">person</i>Iniciar sesión
 	  </a>
 	</li>
 	<li class="sBtn shareBtn" >
-	  <a role="button" class="waves-effect">
+	  <a href="#share" class="waves-effect">
 	    <i class="material-icons">share</i>Compartir
 	  </a>
 	</li>
 	<li class="sBtn download">
-	  <a role="button" class="waves-effect add-button">
+	  <a href="#download" class="waves-effect add-button">
 	    <i class="material-icons">arrow_downward</i>Descargar app
 	  </a>
 	</li>

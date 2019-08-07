@@ -10,27 +10,32 @@ class Calendar extends Component{
   constructor(props){ super(props)
     //Get objects from Courses.json
     this.current=[];
-    const courses = JSON.parse(window.localStorage.getItem('courses'));
-    //Map courses to filter by code and section
-    CourseData.map( (e,p)=>{
-      return courses.map(i=>{
-	if(e.codigo === i.codigo.toString() && e.seccion === i.seccion) this.current.push(e);
-	return e
-      })
-    })
-    //Sort by Time
-    this.current.sort( (a,b) =>{
-	const as = a.horaInicio.split(':');
-	const bs = b.horaInicio.split(':');
-	return (parseInt(as[0]) + parseInt(as[1]/100)) - (parseInt(bs[0]) + parseInt(bs[1]/100)) 
-    })
     //Global Variables
     this.months=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
     this.dd=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
     //States and Refs
     this.state={normal:new Date()}
+    this.setCourses = this.setCourses.bind(this);
     this.allCt=React.createRef();
     this.tuto = React.createRef();
+    this.setCourses();
+  }
+  setCourses(){
+    this.current = [];
+    const courses = JSON.parse(window.localStorage.getItem('courses'));
+    //Map courses to filter by code and section
+    CourseData.map( (e,p)=>{
+      return courses.map(i=>{
+	if(e.codigo === i.codigo.toString() && e.seccion === i.seccion) this.current.push(e);
+	return e                                                             
+      })   
+    })
+    //Sort by time
+    this.current.sort( (a,b) =>{
+      const as = a.horaInicio.split(':');                                      
+      const bs = b.horaInicio.split(':');                                   
+      return (parseInt(as[0]) + parseInt(as[1]/100)) - (parseInt(bs[0]) + parseInt(bs[1]/100)) 
+   })
   }
   componentDidMount(){
     //Select Date Text and Courses list to animate
@@ -60,7 +65,7 @@ class Calendar extends Component{
     }
     //Add one day to date and anim courses
     function slide(e, dir){
-      let cp = e.state.normal;                                                         
+      let cp = e.state.normal;                                                   
       cp.setDate(cp.getDate()+dir);       
       animDate(dir);
       e.setState({normal:cp})
@@ -123,9 +128,10 @@ class Calendar extends Component{
 	      days={days}
 	    />)      
 	  }else fails++;
+         return undefined
 	 })}
-	  <div class={fails===6?'hide timeLine':'show timeLine'}></div>
-	  <div id="emptyCourses" class={fails===6?'show':'hide'}>
+	  <div class={fails===this.current.length?'hide timeLine':'timeLine'}></div>
+	  <div id="emptyCourses" class={fails===this.current.length?'show':'hide'}>
             <i class="material-icons">assignment_late</i>
 	    <p>Descansa, para hoy no tienes ningún curso asignado.</p>
 	  </div>

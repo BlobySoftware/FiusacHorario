@@ -3,7 +3,6 @@ import { withRouter , Redirect} from 'react-router-dom';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import './Navbar.css';
 import Tutorial from '../Tutorial/Tutorial';
-import Search from '../Search/Search';
 import CourseData from '../Calendar/courses.json';
 
 class Navbar extends Component{
@@ -24,6 +23,7 @@ class Navbar extends Component{
      if(e.edificio !== undefined && e.edificio.length > 0) this.courses["Edificio "+e.edificio] =  null;
      if(e.salon !== undefined && e.salon.length > 0) this.courses["Salón "+e.salon+" del Edificio "+e.edificio] =  null;
      if(e.horaInicio !== undefined && e.horaInicio.length > 0) this.courses["Empieza a las "+e.horaInicio+" termina a las "+e.horaFinal] =  null;
+     return 0
     });
   }
 
@@ -88,14 +88,14 @@ class Navbar extends Component{
       <div>
         <nav>
           <div class="nav-wrapper">
-	    <a data-target="side1" class="nbtn sidenav-trigger waves-effect">
+	    <a data-target="side1" href="#menu" class="nbtn sidenav-trigger waves-effect">
 	      <i class="material-icons">menu</i>
 	    </a>
-            <a class="brand-logo truncate"><span>{paths.includes("buscar")?paths.substr(7):paths}</span></a>
-	    <a class="nbtn right waves-effect dropdown-trigger" data-target='dropdown1'>
+            <a class="brand-logo truncate" href="#search"><span>{paths.includes("buscar")?paths.substr(7):paths}</span></a>
+	    <a class="nbtn right waves-effect dropdown-trigger" href="#menuDot" data-target='dropdown1'>
 	      <i class="material-icons">more_vert</i>
 	    </a>
-	    <a class="nbtn right waves-effect" onClick={this.openSearch}>
+	    <a class="nbtn right waves-effect" href="#search" onClick={this.openSearch}>
 	      <i class="material-icons">search</i>
 	    </a>	
 	    <div class="input-field" id="search-container">
@@ -107,8 +107,8 @@ class Navbar extends Component{
 	  </div>
           <div id="searchShadow"></div>
 	  <ul id='dropdown1' class='dropdown-content z-depth-3'>
-    	    <li><a class="black-text waves-effect" onClick={this.openTut}>Información</a></li>
-	    <li><a class="black-text waves-effect">Configuración</a></li>
+    	    <li><a class="black-text waves-effect" href="#info" onClick={this.openTut}>Información</a></li>
+	    <li><a class="black-text waves-effect" href="#conf" >Configuración</a></li>
   	  </ul>
         </nav>
 	<i class={this.state.tut?"material-icons closeT":"hide"} onClick={this.closeTut}>close</i>
