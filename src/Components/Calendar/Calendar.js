@@ -16,10 +16,19 @@ class Calendar extends Component{
     //States and Refs
     this.state={normal:new Date()}
     this.setCourses = this.setCourses.bind(this);
-    this.allCt=React.createRef();
+    this.updateCourse = this.updateCourse.bind(this);
+    this.allCt= React.createRef();
     this.tuto = React.createRef();
     this.setCourses();
   }
+
+  updateCourse (){
+    this.setCourses();
+    this.setState({
+      normal: this.state.normal
+    })
+  }
+
   setCourses(){
     this.current = [];
     const courses = JSON.parse(window.localStorage.getItem('courses'));
@@ -125,7 +134,8 @@ class Calendar extends Component{
 	      prof={e.catedratico}
 	      code={e.codigo}	
 	      count={counter}
-	      days={days}
+        days={days}
+        updateCourse={this.updateCourse}
 	    />)      
 	  }else fails++;
          return undefined

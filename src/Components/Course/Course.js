@@ -48,7 +48,8 @@ class Course extends Component{
     details.style.opacity=0;
     setTimeout(()=>{
       details.classList.add('hide')
-      this.ct.current.style.zIndex=1
+      this.ct.current.style.zIndex=1;
+      this.props.updateCourse();
     },300);
   }
 

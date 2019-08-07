@@ -77,7 +77,6 @@ class Search extends Component{
       },200);
     }
   }
-  
   render(){
     //Get results and time information
     this.setCurrent();
@@ -101,7 +100,7 @@ class Search extends Component{
 		section={e.seccion}
 		prof={e.catedratico}
 		days={days}
-		code={e.codigo}
+    code={e.codigo}
 	      />)
 	    }else if(this.current.length > 1){
 	    return (
@@ -115,7 +114,8 @@ class Search extends Component{
 	        section={e.seccion}
 	        prof={e.catedratico}
 	        count={1}
-	        days={days}
+          days={days}
+          updateCourse={() => console.log("Updated")}
 	      />
 	    )
 	   }
