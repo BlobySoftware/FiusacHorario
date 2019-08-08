@@ -22,41 +22,43 @@ class Course extends Component{
     this.line=React.createRef();
     this.badge = React.createRef();
     this.ct = React.createRef();
-    this.detailsRef = React.createRef();
+    this.detailsRef = React.createRef()
+    this.closeIcon = React.createRef();
+    this.shadow = React.createRef();
     //Open details
     this.safe = false;
     this.details = false;
-    this.openDetails=this.openDetails.bind(this);
-    this.closeDetails=this.closeDetails.bind(this)
     this.control = true;
-  }
-
-  openDetails = () => {
-    //Open CourseExpanded component
-    const details = this.detailsRef.current;
-    this.details = true;
-    details.classList.remove('hide')
-    setTimeout(()=>{
-	details.style.opacity=1;
-	this.ct.current.style.zIndex=10
-    },50);
-  }
-  closeDetails = () => {
-    //Close CourseExpanded component
-    const details = this.detailsRef.current;
-    this.details = false;
-    details.style.opacity=0;
-    setTimeout(()=>{
-      details.classList.add('hide')
-      this.ct.current.style.zIndex=1
-    },300);
   }
 
   componentDidMount(){
     const selected = this;
     let count = 0
     this.safe = true;
-    	
+
+    const openDetails = () => {                                                       //Open CourseExpanded component                                           
+      const details = this.detailsRef.current;                             
+      this.details = true;
+      details.classList.remove('hide');
+      setTimeout(()=>{
+	details.style.opacity=1;                                              
+	this.ct.current.style.zIndex=10                                      
+      },50);                                                                  
+    } 
+    const closeDetails = () => {
+    //Close CourseExpanded component
+    const details = this.detailsRef.current
+    this.details = false;
+    details.style.opacity=0;
+    setTimeout(()=>{                                                          
+      details.classList.add('hide')
+      this.ct.current.style.zIndex=1;
+     },300);                                                                     
+    }
+
+    this.closeIcon.current.addEventListener('click', ()=> closeDetails());
+    this.shadow.current.addEventListener('click', ()=> closeDetails());
+    this.allC.current.addEventListener('click', ()=> openDetails());
     //Difference between two dates (Get Minutes)
     const compare_dates = (date1,date2) =>{
       if (date1<date2) return 1
@@ -123,13 +125,18 @@ class Course extends Component{
       this.line.current.style.background="transparent";
       this.control = false;
       setTimeout(()=>this.control = true,300);
-      this.closeDetails();
+    }
+    const updateCourse = () =>{
+      const details = this.detailsRef.current;                                        this.details = false;                                                            details.style.opacity=0;                                                         setTimeout(()=>{
+      details.classList.add('hide')
+      if(this.safe) this.ct.current.style.zIndex=1;                                   },300);
+      this.props.updateCourse();
     }
     return( 
       <div class="allThem" ref={this.ct}>
 	<div class={this.details?'details':'details hide'} ref={this.detailsRef}>
-	<div class="shadow" onClick={this.closeDetails}></div>
-        <i class='material-icons closeDetails' onClick={this.closeDetails}>close</i>
+	<div class="shadow" ref={this.shadow}></div>
+        <i class='material-icons closeDetails' ref={this.closeIcon}>close</i>
 	  <CourseExpanded
 	    name={this.props.name}
 	    timeStart={this.props.timeStart}
@@ -140,11 +147,12 @@ class Course extends Component{
 	    code={this.props.code}
 	    prof={this.props.prof}
 	    days={this.props.days}
+	    updateCourse={updateCourse}
 	  />
 	</div>
 	<div class="mainLine" ref={this.line}></div>
       	<span ref={this.badge} class={isLab?'show composed':'hide'}>Laboratorio<br/></span>
-      	<div class="content" ref={this.allC} onClick={this.openDetails}>
+      	<div class="content" ref={this.allC}>
       	  <i class="material-icons" ref={this.dot}>fiber_manual_record</i>
 	  <div class='row valign-wrapper cp'>
 	    <div id='pres'>

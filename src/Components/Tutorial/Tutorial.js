@@ -46,6 +46,7 @@ class Tutorial extends Component{
 	      prof='Nombre de Catedratico'
 	      days={[true,true,true,true,true,true,true]}
 	      today={new Date()}
+	      updateCourse={()=>console.log("Updated")}
 	      count={1}
 	    />
 	    <img src={gest} alt="Swipe Gesture" id="gest"/>
