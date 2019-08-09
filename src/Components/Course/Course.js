@@ -10,7 +10,8 @@ class Course extends Component{
     const time1 = this.props.timeStart.split(':');
     const time2 = this.props.timeEnd.split(':');
     now1.setHours(time1[0]);now1.setMinutes(time1[1]);
-    now2.setHours(time2[0]);now2.setMinutes(time2[1])
+    now2.setHours(time2[0]);now2.setMinutes(time2[1]);
+
     //Refs for colors
     this.timeEnd = now2;
     this.timeStart = now1;
@@ -25,6 +26,7 @@ class Course extends Component{
     this.detailsRef = React.createRef()
     this.closeIcon = React.createRef();
     this.shadow = React.createRef();
+
     //Open details
     this.safe = false;
     this.details = false;
@@ -36,29 +38,33 @@ class Course extends Component{
     let count = 0
     this.safe = true;
 
-    const openDetails = () => {                                                       //Open CourseExpanded component                                           
+    //CourseExpanded handler
+    const openDetails = () => {                                            
+      //Open CourseExpanded component                                     
       const details = this.detailsRef.current;                             
       this.details = true;
       details.classList.remove('hide');
       setTimeout(()=>{
-	details.style.opacity=1;                                              
-	this.ct.current.style.zIndex=10                                      
+	details.style.opacity=1;                                           
+	this.ct.current.style.zIndex=10                                    
       },50);                                                                  
     } 
     const closeDetails = () => {
     //Close CourseExpanded component
-    const details = this.detailsRef.current
-    this.details = false;
-    details.style.opacity=0;
-    setTimeout(()=>{                                                          
-      details.classList.add('hide')
-      this.ct.current.style.zIndex=1;
-     },300);                                                                     
+      const details = this.detailsRef.current
+      this.details = false;
+      details.style.opacity=0;
+      setTimeout(()=>{                                                     
+        details.classList.add('hide')
+        this.ct.current.style.zIndex=1;
+      },300);                                                              
     }
 
+    //CourseExpanded handler events
     this.closeIcon.current.addEventListener('click', ()=> closeDetails());
     this.shadow.current.addEventListener('click', ()=> closeDetails());
     this.allC.current.addEventListener('click', ()=> openDetails());
+
     //Difference between two dates (Get Minutes)
     const compare_dates = (date1,date2) =>{
       if (date1<date2) return 1
@@ -66,6 +72,7 @@ class Course extends Component{
       else if (date1>date2) return 3
       else return 4
     }	
+
     //Set colors for refs
     function setColor(c,sc){
      selected.footer.current.style.background=c;
@@ -80,6 +87,7 @@ class Course extends Component{
         selected.line.current.style.background=c;
       }else selected.line.current.style.background="transparent";
     }
+
     //Evaluate time
     this.ups=setInterval(()=>{
     if(this.control){
@@ -101,6 +109,7 @@ class Course extends Component{
     },500);
   }
   componentWillUnmount(){
+    //Clear times and reset
     clearInterval(this.ups);
     this.safe = false;
   }
@@ -109,10 +118,13 @@ class Course extends Component{
     let parsed = false;
     let isLab = false;
     let title = this.props.name.toLowerCase().split(' ');
+    this.details = false;
+
     //Marks and mods
     const areaTitle = title.join(' ').substr(5);
     const labTitle = title.slice(1, 4).join(' ');
     const prof = this.props.prof.toLowerCase().split(' ').slice(0,3).join(' ');
+
     //Add Labels
     if(title[0]==='area') title = areaTitle;
     else if(title.includes('laboratorio')){ title = labTitle; isLab = true}
@@ -126,10 +138,16 @@ class Course extends Component{
       this.control = false;
       setTimeout(()=>this.control = true,300);
     }
+
+    //Prevent to thwrow course expanded
     const updateCourse = () =>{
-      const details = this.detailsRef.current;                                        this.details = false;                                                            details.style.opacity=0;                                                         setTimeout(()=>{
-      details.classList.add('hide')
-      if(this.safe) this.ct.current.style.zIndex=1;                                   },300);
+      const details = this.detailsRef.current;                             
+      this.details = false;                                               
+      details.style.opacity=0;                                             
+      setTimeout(()=>{
+	details.classList.add('hide')
+	if(this.safe) this.ct.current.style.zIndex=1;                     
+      },300);
       this.props.updateCourse();
     }
     return( 

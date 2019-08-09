@@ -13,6 +13,7 @@ class Navbar extends Component{
     this.openTut=this.openTut.bind(this);
     this.closeTut=this.closeTut.bind(this);
     this.state={tut:false,redir:false}
+
     //Set autocomplete data
     this.courses={};
     CourseData.map(e =>{
@@ -29,6 +30,8 @@ class Navbar extends Component{
 
   //Bind to tutorial component
   openTut(){ this.setState({tut:true}) };
+
+  //Close tutorial event
   closeTut(){
     const tuts = document.getElementById('tuto');
     const closeT = document.querySelector('.closeT');
@@ -37,6 +40,7 @@ class Navbar extends Component{
     setTimeout(()=>this.setState({tut:false}),300);
   };
 
+  //Open search input
   openSearch(){
     //Select input field
     const cont = document.getElementById('search-container');
@@ -51,23 +55,30 @@ class Navbar extends Component{
     setTimeout(()=>inp.setAttribute('placeholder','Buscar'),200);
     inp.focus();
   }
+
   componentDidMount(){
-    //Init autocomplete
+    //Containers and animations
     const drop = document.querySelectorAll('.dropdown-trigger')
     const cont = document.getElementById('search-container');
     const searchInput = document.getElementById('search-input');
     const shadow = document.getElementById('searchShadow');
+
+    //Init autocomplete
     M.Dropdown.init(drop);
-    M.Autocomplete.init(searchInput, { data:this.courses })
+    M.Autocomplete.init(searchInput, { data:this.courses });
+	
+    //Hide search function
     function hideSearch(){
        searchInput.style.display="none";
        searchInput.setAttribute('placeholder','')
 	shadow.style.opacity=0;                                      
 	setTimeout(()=>{
-        cont.style.display="none";                                             
-	shadow.style.display="none";                                            
+        cont.style.display="none";                                        
+	shadow.style.display="none";                                       
      },200);
     }
+   
+    //Events
     searchInput.addEventListener('focusout',()=>{
       hideSearch();
     });
@@ -84,6 +95,7 @@ class Navbar extends Component{
     const paths = location.pathname.substr(1);
     let tutComp = ' ';
     if(this.state.tut) tutComp = (<Tutorial />);
+
     return(
       <div>
         <nav>

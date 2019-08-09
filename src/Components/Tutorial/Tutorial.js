@@ -10,6 +10,7 @@ class Tutorial extends Component{
     //Select elements
     const el = document.querySelector('.carousel');
     const tut = document.getElementById('tuto');
+
     //Init carousel
     setTimeout(()=>tut.style.opacity=1,10);
     M.Carousel.init(el, {

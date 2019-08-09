@@ -60,6 +60,7 @@ class Search extends Component{
       }
     }).filter(Boolean);
   }
+
   componentDidUpdate(prev, st){
     //Update results and page transition
     if(prev.keyword !== this.props.keyword){
@@ -77,11 +78,13 @@ class Search extends Component{
       },200);
     }
   }
+
   render(){
     //Get results and time information
     this.setCurrent();
     const laps = this.laps.getMilliseconds()/1000;
     const rss = this.current.length===1?'resultado':'resultados';
+
     return(
       <div id="listOf">
         <h3 id="srcTitle">Resultados de busqueda<br/><h4>Se a econtrado {this.current.length} {rss} en {laps}s</h4></h3>
@@ -100,7 +103,8 @@ class Search extends Component{
 		section={e.seccion}
 		prof={e.catedratico}
 		days={days}
-    code={e.codigo}
+		code={e.codigo}
+		updateCourse={() => console.log("Updated")}
 	      />)
 	    }else if(this.current.length > 1){
 	    return (
@@ -114,15 +118,14 @@ class Search extends Component{
 	        section={e.seccion}
 	        prof={e.catedratico}
 	        count={1}
-          days={days}
-          updateCourse={() => console.log("Updated")}
+		days={days}
+		updateCourse={() => console.log("Updated")}
 	      />
 	    )
 	   }
            return undefined
 	  })}
-	<div class='rights'><p>FIUSAC Horario 2019 ®<br/>todos los derechos res
-ervados.</p>
+	<div class='rights'><p>FIUSAC Horario 2019 ®<br/>todos los derechos reservados.</p>
           </div>
         </div>
       </div>

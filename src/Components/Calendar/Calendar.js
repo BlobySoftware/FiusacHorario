@@ -10,9 +10,11 @@ class Calendar extends Component{
   constructor(props){ super(props)
     //Get objects from Courses.json
     this.current=[];
+
     //Global Variables
     this.months=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
     this.dd=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+
     //States and Refs
     this.state={normal:new Date()}
     this.setCourses = this.setCourses.bind(this);
@@ -23,15 +25,20 @@ class Calendar extends Component{
   }
 
   updateCourse (){
+    //Enter style
     this.setCourses();
     this.allCt.current.style.transition="none";
-    this.allCt.current.style.opacity=0;
+    this.allCt.current.style.opacity=0
+
+    //Leave style
     setTimeout(()=>{
-	this.allCt.current.style.transition="all 0.45s ease";
-	this.allCt.current.style.opacity=1;
+      this.allCt.current.style.transition="all 0.45s ease";
+      this.allCt.current.style.opacity=1;
     },50);
     
-    this.setState({                                                                    normal: this.state.normal
+    //Update render
+    this.setState({
+      normal: this.state.normal
     })
   }
 
@@ -42,15 +49,16 @@ class Calendar extends Component{
     CourseData.map( (e,p)=>{
       return courses.map(i=>{
 	if(e.codigo === i.codigo.toString() && e.seccion === i.seccion) this.current.push(e);
-	return e                                                             
+	return e                  
       })   
     })
+
     //Sort by time
     this.current.sort( (a,b) =>{
-      const as = a.horaInicio.split(':');                                      
-      const bs = b.horaInicio.split(':');                                   
+      const as = a.horaInicio.split(':');
+      const bs = b.horaInicio.split(':');                                  
       return (parseInt(as[0]) + parseInt(as[1]/100)) - (parseInt(bs[0]) + parseInt(bs[1]/100)) 
-   })
+    })
   }
   componentDidMount(){
     //Select Date Text and Courses list to animate
@@ -58,6 +66,7 @@ class Calendar extends Component{
     const all = document.getElementById('all');
     const timeLine = document.querySelector('.timeLine');
     const classAct = this;
+
     //Main animations
     animDate(-1);
     function animDate(dir){
@@ -78,13 +87,15 @@ class Calendar extends Component{
       },150);
       setTimeout(()=>timeLine.style.height='calc(100% - 40px)',400);
     }
+
     //Add one day to date and anim courses
     function slide(e, dir){
-      let cp = e.state.normal;                                                   
+      let cp = e.state.normal;
       cp.setDate(cp.getDate()+dir);       
       animDate(dir);
       e.setState({normal:cp})
     }
+
     //Swipe Event
     SwipeListener(this.allCt.current);
 
@@ -93,6 +104,7 @@ class Calendar extends Component{
       if(directions.left) slide(classAct, 1);
       if(directions.right) slide(classAct, -1);
     })
+
     //Reset date
     mainDate.addEventListener('click', () =>{
       classAct.setState({normal:new Date()})

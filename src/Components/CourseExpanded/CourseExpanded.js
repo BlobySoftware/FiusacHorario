@@ -6,11 +6,14 @@ class CourseExpanded extends Component{
   constructor(props){super(props)
     //Read from localStorage
     let state = {isSchedule:false};
-    this.courses = JSON.parse(window.localStorage.getItem('courses'));
+    this.courses = JSON.parse(window.localStorage.getItem('courses'))
+
+    //Filter current course
     this.courses.map(e =>{
       if(this.props.section.toString() === e.seccion.toString() && this.props.code.toString() === e.codigo.toString()) state = {isSchedule:true};
       return 0;
     });
+
     //States and Refs
     this.state = state;
     this.handleCourses = this.handleCourses.bind(this);
@@ -18,7 +21,7 @@ class CourseExpanded extends Component{
     this.remC = React.createRef();
   }
   handleCourses(e){
-    //Add or remove course
+    //Add course
     this.courses = JSON.parse(window.localStorage.getItem('courses'));
     if(e) {
       this.courses.push({codigo:this.props.code,seccion:this.props.section});
@@ -26,6 +29,8 @@ class CourseExpanded extends Component{
       this.setState({isSchedule:true});
       M.toast({html:'Curso agregado exitosamente'});
     }
+
+    //Remove Course
     if(!e) {
       this.courses = this.courses.map(e =>{
          if(this.props.section.toString() === e.seccion.toString() && this.props.code.toString() === e.codigo.toString()) return false;
@@ -39,27 +44,39 @@ class CourseExpanded extends Component{
   componentDidUpdate(prev, st){
     //Refresh handle action for courses
     if(prev.section !== this.props.section && prev.code !== this.props.code){
-      let state = {isSchedule:false};                                                  this.courses = JSON.parse(window.localStorage.getItem('courses'));               this.courses.map(e =>{                                                             if(this.props.section.toString() === e.seccion.toString() && this.props.code.toString() === e.codigo.toString()) state = {isSchedule:true};                       return 0;                                                                      });                                                                              //States and Refs                                                        
-	this.setState( state)
+      let state = {isSchedule:false};                                     
+      this.courses = JSON.parse(window.localStorage.getItem('courses'));         
+      this.courses.map(e =>{
+	if(this.props.section.toString() === e.seccion.toString() && this.props.code.toString() === e.codigo.toString()) state = {isSchedule:true};   
+	return 0;
+      });            
+
+      //States and Refs                                         
+      this.setState( state)
     }
   }
   componentDidMount(){
     //Verify if is added to courses
     this.courses.map(e =>{ 
-	if(this.props.section.toString() === e.seccion.toString() && this.props.code.toString() === e.codigo.toString()) this.setState({isSchedule:true});
-	return 0
+      if(this.props.section.toString() === e.seccion.toString() && this.props.code.toString() === e.codigo.toString()) this.setState({isSchedule:true});
+      return 0
     });
+
+    //Add events to handler btn
     this.addC.current.addEventListener('click', ()=> {
-	this.handleCourses(true);
-	this.props.updateCourse();
+      this.handleCourses(true);
+      this.props.updateCourse();
     });
     this.remC.current.addEventListener('click', ()=> {
-	this.handleCourses(false);
-	this.props.updateCourse();
+      this.handleCourses(false);
+      this.props.updateCourse();
     });
   }
+
   render(){
+    //Global day names
     const days = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado']
+
     return(
       <div id="detailsContainer">
         <div id="detailsShadow"></div>

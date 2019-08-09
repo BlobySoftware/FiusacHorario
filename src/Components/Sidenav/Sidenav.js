@@ -11,7 +11,8 @@ class Sidenav extends Component{
     const route = window.location.pathname.substr(1);
     const sBtn = document.querySelectorAll('.sBtn');
     const shareBtn = document.querySelector(".shareBtn");
-    const s = M.Sidenav.init(list)
+    const s = M.Sidenav.init(list);
+
     //Share application
     shareBtn.addEventListener("click", () =>{
       if (navigator.share) {
@@ -24,6 +25,7 @@ class Sidenav extends Component{
         .catch((error) => console.log('Error sharing', error));
 	} else alert('Tu navegador no es compatible');
      })
+
     //Styles active route
     for(let i = 0;i<2;i++){
       sBtn[i].classList.remove('active');
