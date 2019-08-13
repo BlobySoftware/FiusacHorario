@@ -137,3 +137,44 @@
   background:var(--disable);
   transition:height 0.3s ease;
 }
+.default{
+  padding:20px;
+  position:absolute;
+  width:100%;
+  top:calc(50% + 23px);
+  transform:translateY(-50%);
+}
+.default > #banner{
+  display:flex;
+  justify-content:flex-start;
+  align-items:center;
+  width:100%;
+  margin-top:10px;
+}
+.default > #banner span{
+  font-weight:550;
+  line-height:17px;
+  font-size:1.1em;
+  color:#999;
+}
+.default > #banner > img{
+  width:20%;
+  margin-right:10px;
+}
+.default > h4{
+  text-transform:unset;
+  color:#555;
+  font-weight:550;
+  font-size:2.3em;
+  line-height:25px;
+}
+.default > p{
+  display:block;
+  font-size:1.1em;
+  line-height:3px;
+  color:#777;
+}
+.default > p i{
+  position:relative;
+  top:7px;
+}

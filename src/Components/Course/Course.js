@@ -87,6 +87,21 @@ class Course extends Component{
         selected.line.current.style.background=c;
       }else selected.line.current.style.background="transparent";
     }
+    //Notification
+
+    function showNotification(msg) {
+  Notification.requestPermission(function(result) {
+    if (result === 'granted') {
+      navigator.serviceWorker.ready.then(function(registration) {
+        registration.showNotification('Proximo curso', {
+          body: msg,
+          vibrate: [200, 100, 200, 100, 200, 100, 200],
+          tag: 'event',
+	  icon:'./img/icn.png'
+        });
+      });
+    }
+  });}
 
     //Evaluate time
     this.ups=setInterval(()=>{
@@ -96,14 +111,15 @@ class Course extends Component{
       const resEnd = compare_dates(now,this.timeEnd);
       //If time to end a course < now < time to start a course
       if((res===3 || res===2) && resEnd===1){
-	if(res===2){
-	  count++
-	  if(count===1) alert(`${this.props.name} en ${this.props.room} del ${this.props.build}`);
-	}
 	setColor('var(--secondary)','scale(1.3,1.3)');
       }else if(res === 1){
-	const hours = (this.timeStart.getTime() - now.getTime())/(1000*60);      
-	if(hours <= 10) setColor('var(--warning)','scale(1.15,1.15)');
+	const hours = (this.timeStart.getTime() - now.getTime())/(1000*60);
+	if(hours <= 10){
+	  count++;
+	  setColor('var(--warning)','scale(1.15,1.15)');
+	  if(count===1) showNotification(`${this.props.name.toLowerCase()}
+en ${this.props.room} del ${this.props.build}`)
+	}
       }else setColor('var(--disable)','scale(1,1)');
     }
     },500);
@@ -135,21 +151,23 @@ class Course extends Component{
     if(this.safe){
       this.detailsRef.current.classList.add('hide');
       this.line.current.style.background="transparent";
+      this.dot.current.style.color="transparent";
       this.control = false;
       setTimeout(()=>this.control = true,300);
     }
 
     //Prevent to thwrow course expanded
     const updateCourse = () =>{
-      const details = this.detailsRef.current;                             
-      this.details = false;                                               
-      details.style.opacity=0;                                             
+      const details = this.detailsRef.current;
+      this.details = false;
+      details.style.opacity=0;
       setTimeout(()=>{
 	details.classList.add('hide')
 	if(this.safe) this.ct.current.style.zIndex=1;                     
       },300);
       this.props.updateCourse();
     }
+
     return( 
       <div class="allThem" ref={this.ct}>
 	<div class={this.details?'details':'details hide'} ref={this.detailsRef}>

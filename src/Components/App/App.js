@@ -24,7 +24,7 @@ class App extends Component {
               <Route exact path="/horario" component={Calendar} />
 	      <Route exact path="/tutorial" component={Tutorial} />
 	      <Route path="/buscar/:id" render={props => (<Search keyword={props.match.params.id}/>)}/>
-	   </Switch>
+	    </Switch>
           </div>
         </BrowserRouter>
 	<Floating />

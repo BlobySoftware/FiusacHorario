@@ -58,6 +58,7 @@ class Sidenav extends Component{
       });
    });
   }
+  
   render(){
     return (
       <ul class="sidenav" id="side1">

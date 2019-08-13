@@ -44,7 +44,7 @@ class Calendar extends Component{
 
   setCourses(){
     this.current = [];
-    const courses = JSON.parse(window.localStorage.getItem('courses'));
+    const courses = window.localStorage.getItem('courses')===null?[]:JSON.parse(window.localStorage.getItem('courses'));
     //Map courses to filter by code and section
     CourseData.map( (e,p)=>{
       return courses.map(i=>{
@@ -120,11 +120,13 @@ class Calendar extends Component{
     const today =  this.dd[this.state.normal.getDay()]
     const cMonth = this.months[this.state.normal.getMonth()];
     const tDate = this.state.normal.getDate();
+    const def = this.current.length===0?true:false;
     let fails = 0;
     let counter = 0;
 
     return(
-      <div ref={this.allCt} id="ctp">
+      <div>
+      <div ref={this.allCt} id="ctp" class={def?'hide':'show'}>
         <div id="header">
 	  <h3 id="mainDate" class={today==='Miércoles'?'rss':today==='Domingo'?'rsd':'exp'}>{today} <br/><span>{cMonth} {tDate}</span></h3>
 	  <div id="main">
@@ -167,6 +169,15 @@ class Calendar extends Component{
 	  </div>
         </section>
 	<div id="swipeArea"></div>
+      </div>
+      <div class={def?'default':'hide'}>
+        <h4>No tienes cursos asignados</h4>
+	<p>Puedes agregar los cursos que quieras con solo utilizar el buscador <i class="material-icons">search</i></p>
+	<div id="banner">
+	  <img src={Logo} alt='Default banner'/>
+	  <span>Cursos oficiales<br/>de la facultad.</span>
+	</div>
+      </div>
       </div>
     );
   }

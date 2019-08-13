@@ -6,7 +6,7 @@ class CourseExpanded extends Component{
   constructor(props){super(props)
     //Read from localStorage
     let state = {isSchedule:false};
-    this.courses = JSON.parse(window.localStorage.getItem('courses'))
+    this.courses = window.localStorage.getItem('courses')===null?[]:JSON.parse(window.localStorage.getItem('courses'))
 
     //Filter current course
     this.courses.map(e =>{
@@ -22,7 +22,7 @@ class CourseExpanded extends Component{
   }
   handleCourses(e){
     //Add course
-    this.courses = JSON.parse(window.localStorage.getItem('courses'));
+    this.courses = window.localStorage.getItem('courses')===null?[]:JSON.parse(window.localStorage.getItem('courses'));
     if(e) {
       this.courses.push({codigo:this.props.code,seccion:this.props.section});
       window.localStorage.setItem('courses',JSON.stringify(this.courses));
