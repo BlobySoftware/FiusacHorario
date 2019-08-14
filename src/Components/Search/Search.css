@@ -24,4 +24,19 @@
   color:#ccc;
   text-transform:none;
 }
-
+.noRes{
+  padding:0 0 07px 25px;
+}
+.noRes > h5{
+  text-transform:unset;
+  color:#666;
+  font-size:1.2em;
+}
+.noRes > p{
+  display:block;
+  line-height:17px;
+}
+.noRes > h5 > i{
+  position:relative;
+  top:6px;
+}

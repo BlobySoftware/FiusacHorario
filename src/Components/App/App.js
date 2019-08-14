@@ -27,7 +27,7 @@ class App extends Component {
 	    </Switch>
           </div>
         </BrowserRouter>
-	<Floating />
+	<Floating icon="add"/>
       </main>
     )
   }

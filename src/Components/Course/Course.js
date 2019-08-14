@@ -151,7 +151,6 @@ en ${this.props.room} del ${this.props.build}`)
     if(this.safe){
       this.detailsRef.current.classList.add('hide');
       this.line.current.style.background="transparent";
-      this.dot.current.style.color="transparent";
       this.control = false;
       setTimeout(()=>this.control = true,300);
     }

@@ -1,26 +1,47 @@
-import React, { Component } from 'react'
-import M from 'materialize-css/dist/js/materialize.min.js';
+import React, { Component } from 'react';
+import SwipeListener from 'swipe-listener';
 import Course from '../Course/Course';
 import gest from './gesture.png'
 import detail from './details.jpg';
 import './Tutorial.css';
 
 class Tutorial extends Component{
+  constructor(props){super(props)
+    this.items = 0;
+  }
   componentDidMount(){
     //Select elements
-    const el = document.querySelector('.carousel');
     const tut = document.getElementById('tuto');
+    const cont = document.querySelector('.cont');
+    const dots = document.getElementById('dots');
+    this.items = cont.childNodes.length - 1;
+    let current = 0;
 
-    //Init carousel
+    //Animation
     setTimeout(()=>tut.style.opacity=1,10);
-    M.Carousel.init(el, {
-      fullWidth: true,
-      indicators: true,
-      shift:100,
-      noWrap:true
-    }); 
+    dots.childNodes[current].childNodes[0].classList.add('currentDot');
+    //Init Swipe
+    SwipeListener(tut);
+
+    tut.addEventListener('swipe',e =>{
+      const dir = e.detail.directions;
+      if(dir.left) current++;
+      if(dir.right) current--;
+      if(current <= 0) current = 0;
+      if(current >= this.items) current = this.items;
+      cont.style.left=`-${current}00%`;
+      for(let i=0;i<this.items+1;i++){
+        dots.childNodes[i].childNodes[0].classList.remove('currentDot');
+      }
+      dots.childNodes[current].childNodes[0].classList.add('currentDot');
+    })
+    this.setState({ref:true});
   }
   render(){
+    const lis = [];
+    for(let i=0;i<this.items+1;i++){
+      lis.push(<li><i class="material-icons">lens</i></li>);
+    }
     return(
       <div id="tuto">   
 	<div class="cont">
@@ -52,7 +73,8 @@ class Tutorial extends Component{
 	    />
 	    <img src={gest} alt="Swipe Gesture" id="gest"/>
 	    <div id="block"></div>
-	    <hr></hr>
+	  </div>
+	  <div class="item">
 	    <h4>Orden</h4>
 	    <p>Los cursos se muestran en un orden cronologico en cualquier seccion de la applicación, se ordenan de acuerdo a su hora inicio y no a su duración total.</p>
 	    <hr></hr>
@@ -64,6 +86,9 @@ class Tutorial extends Component{
 	    </div>
           </div>
         </div>
+	<ul id="dots">
+            {lis}
+        </ul>
       </div>
     )	
   }

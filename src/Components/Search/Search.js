@@ -125,8 +125,11 @@ class Search extends Component{
 	   }
            return undefined
 	  })}
-	<div class='rights'><p>FIUSAC Horario 2019 ®<br/>todos los derechos reservados.</p>
-          </div>
+	<div class={this.current.length===0?'noRes':'hide'}>
+	  <h5><i class="material-icons">info_outline</i> No se encontraron resultados</h5>
+	  <p>Intenta buscando algo similar o algo nuevo. Algunos terminos de busqueda tienen un orden especifico, puedes verlo en el menu de información.</p>
+	</div>
+	<div class='rights'><p>FIUSAC Horario 2019 ®<br/>todos los derechos reservados.</p></div>
         </div>
       </div>
     )	  

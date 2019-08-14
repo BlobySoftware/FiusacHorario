@@ -10,7 +10,6 @@ class Navbar extends Component{
     super(props);
     //Global Functions
     this.openSearch = this.openSearch.bind(this);
-    this.openTut=this.openTut.bind(this);
     this.closeTut=this.closeTut.bind(this);
     this.state={tut:false,redir:false}
 
@@ -28,15 +27,13 @@ class Navbar extends Component{
     });
   }
 
-  //Bind to tutorial component
-  openTut(){ this.setState({tut:true}) };
-
   //Close tutorial event
   closeTut(){
     const tuts = document.getElementById('tuto');
     const closeT = document.querySelector('.closeT');
     closeT.classList.add('hide');
     tuts.style.opacity=0;
+    closeT.style.opacity=0;
     setTimeout(()=>this.setState({tut:false}),300);
   };
 
@@ -62,6 +59,8 @@ class Navbar extends Component{
     const cont = document.getElementById('search-container');
     const searchInput = document.getElementById('search-input');
     const shadow = document.getElementById('searchShadow');
+    const opTut = document.getElementById('opTut');
+    const closeT = document.querySelector('.closeT')
 
     //Init autocomplete
     M.Dropdown.init(drop);
@@ -88,6 +87,10 @@ class Navbar extends Component{
     searchInput.addEventListener('search',()=>{
       hideSearch();
     });
+    opTut.addEventListener('click',()=>{
+      this.setState({tut:true});
+      setTimeout(()=>closeT.style.opacity=1,10);
+    })
   }
   render(){
     //Update state tu show tutorial
@@ -119,11 +122,10 @@ class Navbar extends Component{
 	  </div>
           <div id="searchShadow"></div>
 	  <ul id='dropdown1' class='dropdown-content z-depth-3'>
-    	    <li><a class="black-text waves-effect" href="#info" onClick={this.openTut}>Información</a></li>
-	    <li><a class="black-text waves-effect" href="#conf" >Configuración</a></li>
+    	    <li id="opTut"><a class="black-text waves-effect" href="#info">Información</a></li>
   	  </ul>
         </nav>
-	<i class={this.state.tut?"material-icons closeT":"hide"} onClick={this.closeTut}>close</i>
+	<i class={this.state.tut?"material-icons closeT":"hide closeT"} onClick={this.closeTut}>close</i>
         {tutComp}
 	{this.state.redir!==false?<Redirect to={this.state.redir}/>:''}
       </div>
