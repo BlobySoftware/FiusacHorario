@@ -82,9 +82,22 @@ class Tutorial extends Component{
 	    <p>Cada curso contiene información extra en su interior, estas tarjetas se encuentran en los cursos o en la caja busqueda.</p>
 	    <div id="detailsTutorial">
 	      <img src={detail} alt="CourseDetails"/>
-	      <p>Cuando presionas sobre un curso este abrira una nueva ventana con información mas detallada como:<br/><br/>Codigo •<br/>Dias •<br/>Lugar •<br/></p>
+	      <p>Cuando presionas sobre un curso este abrira una nueva ventana con información mas detallada como:<br/><br/>Código del curso •<br/>Días del curso •<br/>Lugar del salón •<br/></p>
 	    </div>
           </div>
+	  <div class="item bs">
+	    <h5>Buscador</h5>
+	    <hr></hr>
+	    <p>Puedes buscar por: nombre, sección, docente, codigo, salón, edificio, hora, lugar, termino similar, etc y cualquier cosa relacionada con los cursos.<br/> para acceder a la busqueda avanzada debes escribir en el siguiente formato:</p>
+	    <p><h4>Código</h4> "numero de código"</p>
+	    <p><h4>Edificio</h4> "nombre del edificio"</p>
+	    <p><h4>Salón</h4> "nombre del salon" <h4>del</h4> "nombre del edificio"</p>
+	    <p><h4>Empieza a las</h4> "inicio (hh:mm)" <h4>termina a las</h4> "final (hh:mm)"</p>
+	    <div class="add">
+	      <i class="material-icons">info_outline</i><h4> Información importante</h4><br/>
+	      <span>La busqueda avanzada solo funciona si escribes el formato exactamente como se muestra, incluyendo acentos, y no agregues signos de puntuación como "_ - , :" etc.</span>
+	    </div>
+	  </div>
         </div>
 	<ul id="dots">
             {lis}
