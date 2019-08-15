@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import M from "materialize-css/dist/js/materialize.min.js";
 import 'materialize-css/dist/css/materialize.min.css';
 import './Sidenav.css';
@@ -8,10 +8,27 @@ class Sidenav extends Component{
   componentDidMount(){
     //Init side nav
     const list = document.querySelector('.sidenav');
-    const route = window.location.pathname.substr(1);
-    const sBtn = document.querySelectorAll('.sBtn');
+    const sBtn = document.querySelectorAll('.mBtn');
     const shareBtn = document.querySelector(".shareBtn");
     const s = M.Sidenav.init(list);
+
+    //Check route to add active class
+    function addActive(rr){
+      const max = sBtn.length;
+      for(let i=0;i<max;i++){
+	//Check route
+	const text = sBtn[i].textContent.split(' ')[1].toLowerCase();
+	sBtn[i].classList.remove('active');
+	if(rr === text) sBtn[i].classList.add('active');
+	else if(rr === '') sBtn[0].classList.add('active');
+	
+	//Close sidenav
+	s.close();
+      }
+    }
+
+    //Listen route changes                                     
+    this.props.history.listen(location => addActive(location.pathname.substr(1)));
 
     //Share application
     shareBtn.addEventListener("click", () =>{
@@ -27,18 +44,8 @@ class Sidenav extends Component{
      })
 
     //Styles active route
-    for(let i = 0;i<2;i++){
-      sBtn[i].classList.remove('active');
-      sBtn[i].addEventListener('click', e => {
-        sBtn[0].classList.remove('active');    
-	sBtn[1].classList.remove('active');
-        sBtn[i].classList.add('active');
-	s.close();
-      })
-      let btnText = sBtn[i].innerHTML.substr(sBtn[i].innerHTML.indexOf('i>')+2,sBtn[i].innerHTML.length-sBtn[i].innerHTML.indexOf('i>')-6);
-      if(route===btnText.toLowerCase()) sBtn[i].classList.add('active');
-      else if(route === '') sBtn[0].classList.add('active');
-    }
+    addActive(window.location.pathname.substr(1));
+
     //Service worker install button
     let deferredPrompt;
     const addBtn = document.querySelector('.add-button');
@@ -66,18 +73,18 @@ class Sidenav extends Component{
           <div class="user-view">
 	    <span role="button" class="userInfo">
 	      <span class="name">FIUSAC Horario</span>
-	      <span class="email">Version beta v0.67</span>
+	      <span class="email">Version beta v0.83<br/>Dev. Alex Santos</span>
 	    </span>
 	  </div>
 	</li>
-	<Link to="/"><li class="sBtn homeBtn">
+	<Link to="/"><li class="sBtn mBtn">
           <a href="#toHome" class="waves-effect">
-            <i class="material-icons">home</i>Inicio
+            <i class="material-icons">home</i> Inicio
           </a>
         </li></Link>
-	<Link to="/horario"><li class="sBtn shBtn">
+	<Link to="/horario"><li class="sBtn mBtn">
           <a href="#toSchedule" class="waves-effect">
-            <i class="material-icons">today</i>Horario
+            <i class="material-icons">today</i> Horario
           </a>
         </li></Link>
         <li>
@@ -118,4 +125,4 @@ class Sidenav extends Component{
   }
 }
 
-export default Sidenav;
+export default withRouter(Sidenav);

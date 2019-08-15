@@ -2,6 +2,7 @@ body {
   --primary:#2196F3;
   --secondary:#8BC34A;
   --warning:#4DB6AC;
+  --error:#F44336;
   --accent:rgb(80,80,80);
   --icons:#FFFFFF;
   --light:#64B5F6;
@@ -10,6 +11,7 @@ body {
   --text:#212121;
   --secondary-text:#757575;
   --divider:#BDBDBD;
+  --alter:#eee;
   margin: 0;
   background:#eee;
   padding:0;

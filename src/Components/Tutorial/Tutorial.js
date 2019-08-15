@@ -88,7 +88,8 @@ class Tutorial extends Component{
 	  <div class="item bs">
 	    <h5>Buscador</h5>
 	    <hr></hr>
-	    <p>Puedes buscar por: nombre, sección, docente, codigo, salón, edificio, hora, lugar, termino similar, etc y cualquier cosa relacionada con los cursos.<br/> para acceder a la busqueda avanzada debes escribir en el siguiente formato:</p>
+	    <p class="ft">Puedes buscar por: nombre, sección, docente, codigo, salón, edificio, hora, lugar, etc.<br/> para acceder a la busqueda avanzada debes escribir en el siguiente formato:</p>
+	    <p><h4>Sección</h4> "numero de sección"</p>
 	    <p><h4>Código</h4> "numero de código"</p>
 	    <p><h4>Edificio</h4> "nombre del edificio"</p>
 	    <p><h4>Salón</h4> "nombre del salon" <h4>del</h4> "nombre del edificio"</p>
@@ -96,6 +97,10 @@ class Tutorial extends Component{
 	    <div class="add">
 	      <i class="material-icons">info_outline</i><h4> Información importante</h4><br/>
 	      <span>La busqueda avanzada solo funciona si escribes el formato exactamente como se muestra, incluyendo acentos, y no agregues signos de puntuación como "_ - , :" etc.</span>
+	    </div>
+	    <div class="add rdds">
+	      <i class="material-icons">close</i><h4>Alerta de uso</h4><br/>
+	      <span>Esta es una version beta del buscador intenta buscar terminos especificos y NO  generales como : "mate, lab, practica" o palabras menores a 3 letras.</span>
 	    </div>
 	  </div>
         </div>

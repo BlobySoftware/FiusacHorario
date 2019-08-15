@@ -40,7 +40,7 @@ class Search extends Component{
       }
       else if(k.includes('salon') || k.includes('salón')){
 	if(k.includes('edificio')){
-          if(e.salon.toString().includes(k.split(' ')[1]) && e.edificio.toLowerCase().includes(k.split(' ')[3])) return e;
+          if(e.salon.toString().includes(k.split(' ')[1]) && e.edificio.toLowerCase().includes(k.split(' ')[4].toLowerCase())) return e;
 	  else return false;
 	}
 	else if(e.salon.toString().includes(k.split(' ')[1])) return e;

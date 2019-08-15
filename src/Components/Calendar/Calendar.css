@@ -21,7 +21,7 @@
 }
 #header > h3 > span{
   font-size:0.6em;
-  color:#eee;
+  color:var(--alter);
 }
 #header #main{
   text-align:right;
@@ -34,7 +34,7 @@
 #header #main #bans h4 > span{
   font-size:0.7em;
   position:relative;
-  color:#ddd;
+  color:var(--alter);
 }
 #header #main #bans img{
   width:48px;
@@ -42,7 +42,7 @@
   margin-top:-5px;
 }
 #header #main #bans h4{
-  color:#fff;
+  color:var(--icons);
   font-size:1.1em;
   text-shadow:0 0 10px rgba(0,0,0,.3);
 }
@@ -73,7 +73,7 @@
 }
 .rights{
   background:var(--divider);
-  color:#eee;
+  color:var(--alter);
   padding:10px 15px;
   border-radius:5px;
   box-shadow:0 05px 10px rgba(0,0,0,.05);
@@ -109,13 +109,15 @@
 }
 #emptyCourses > i{
   font-size:7em;
-  color:#999;
+  color:var(--secondary-text);
+  opacity:0.8;
 }
 #emptyCourses > p{
   font-size:1.3em;
   line-height:16px;
   font-weight:550;
-  color:#999;
+  color:var(--secondary-text);
+  opacity:0.8;
 }
 #band{
   position:relative;
@@ -144,26 +146,32 @@
   top:calc(50% + 23px);
   transform:translateY(-50%);
 }
-.default > #banner{
+#banner{
   display:flex;
   justify-content:flex-start;
   align-items:center;
   width:100%;
   margin-top:10px;
+  position:fixed;
+  bottom:0px;
+  left:0;
+  padding:10px;
+  background:rgba(0,0,0,.1);
 }
-.default > #banner span{
+#banner span{
   font-weight:550;
   line-height:17px;
   font-size:1.1em;
-  color:#999;
+  color:var(--secondary-text);
+  opacity:0.7;
 }
-.default > #banner > img{
-  width:20%;
+#banner > img{
+  width:62px;
   margin-right:10px;
 }
 .default > h4{
   text-transform:unset;
-  color:#555;
+  color:var(--secondary-text);
   font-weight:550;
   font-size:2.3em;
   line-height:25px;
@@ -172,7 +180,7 @@
   display:block;
   font-size:1.1em;
   line-height:3px;
-  color:#777;
+  color:var(--secondary-text);
 }
 .default > p i{
   position:relative;

@@ -62,7 +62,6 @@ nav .nav-wrapper .brand-logo span{
   width:0px;
   margin:0;
   padding:0;
-  background:red;
 }
 #searchShadow{
   position:fixed;
@@ -98,13 +97,13 @@ nav .nav-wrapper .brand-logo span{
   color:var(--primary)!important;
 }
 .section-search input.autocomplete {
-  color: #000;
+  color:var(--icons);
 }
 .input-field .prefix.active {
-  color: #000!important;
+  color:var(--icons)!important;
 }
 .dropdown-content li>a, .dropdown-content li>span {
-  color: #555!important;
+  color:var(--secondary-text)!important;
   text-transform:capitalize;
 }
 .dropdown-content{

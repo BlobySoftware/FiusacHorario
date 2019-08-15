@@ -10,31 +10,33 @@
 #srcTitle{
   position:relative;
   text-transform:none;
-  color:#eee;
+  color:var(--alter);
   width:100%;
   padding:20px;
-  background:#888;
+  background:var(--secondary-text);
   font-weight:550;
   font-size:1.4em;
   z-index:2;
 }
 #srcTitle h4{
   font-size:0.7em;
-  color:#fff;
-  color:#ccc;
+  color:var(--alter);
   text-transform:none;
+  opacity:0.8;
 }
 .noRes{
   padding:0 0 07px 25px;
 }
 .noRes > h5{
   text-transform:unset;
-  color:#666;
+  color:var(--secondary-text);
   font-size:1.2em;
 }
 .noRes > p{
   display:block;
   line-height:17px;
+  color:var(--secondary-text);
+  opacity:0.85;
 }
 .noRes > h5 > i{
   position:relative;

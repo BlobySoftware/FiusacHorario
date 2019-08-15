@@ -43,7 +43,8 @@ h4{
 }
 h5{
   font-size:0.9em;
-  color:#999;
+  color:var(--secondary-text);
+  opacity:0.8;
   font-weight:550;
 }
 #footer{
@@ -65,7 +66,7 @@ h5{
   z-index:0;
 }
 #footer h5{
-  color:#fff;
+  color:var(--icons);
   font-weight:550;
   position:relative;
   z-index:2;
@@ -112,7 +113,7 @@ h5,h4{
   padding:7px;
   border-radius:100%;
   z-index:4;
-  color:#fff;
+  color:var(--icons);
   background:var(--accent);
   font-size:1.3em!important;
 }

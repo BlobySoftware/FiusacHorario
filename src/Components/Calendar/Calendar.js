@@ -170,9 +170,11 @@ class Calendar extends Component{
         </section>
 	<div id="swipeArea"></div>
       </div>
-      <div class={def?'default':'hide'}>
-        <h4>No tienes cursos asignados</h4>
-	<p>Puedes agregar los cursos que quieras con solo utilizar el buscador <i class="material-icons">search</i></p>
+      <div class={def?'show':'hide'}>
+	<div class="default">
+          <h4>No tienes cursos asignados</h4>
+	  <p>Puedes agregar los cursos que quieras con solo utilizar el buscador <i class="material-icons">search</i></p>
+	</div>
 	<div id="banner">
 	  <img src={Logo} alt='Default banner'/>
 	  <span>Cursos oficiales<br/>de la facultad.</span>
