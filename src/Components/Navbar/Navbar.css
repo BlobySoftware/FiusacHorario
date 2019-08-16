@@ -29,9 +29,14 @@ nav .nav-wrapper > a >i{
   left:50%;
   transform:translate(-50%,-50%);
 }
-nav .nav-wrapper .brand-logo {
-  width:200px;
-  margin-left:-25px;
+nav .brand {
+  position:absolute;
+  left:55px;
+  top:1px;
+  z-index:2;
+  font-weight:550;
+  font-size:1.48em;
+  text-transform:capitalize;
 } 
 nav .nav-wrapper .brand-logo span{
   position:relative;

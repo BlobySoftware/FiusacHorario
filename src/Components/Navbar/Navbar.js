@@ -102,11 +102,11 @@ class Navbar extends Component{
     return(
       <div>
         <nav>
+	  <a class="brand truncate" href="./"><span>{paths.includes("buscar")?paths.substr(7):paths}</span></a>
           <div class="nav-wrapper">
 	    <a data-target="side1" href="#menu" class="nbtn sidenav-trigger waves-effect">
 	      <i class="material-icons">menu</i>
 	    </a>
-            <a class="brand-logo truncate" href="#search"><span>{paths.includes("buscar")?paths.substr(7):paths}</span></a>
 	    <a class="nbtn right waves-effect dropdown-trigger" href="#menuDot" data-target='dropdown1'>
 	      <i class="material-icons">more_vert</i>
 	    </a>

@@ -105,7 +105,7 @@ class Sidenav extends Component{
 	  </a>
 	</li>
 	</div>
-	<li class="sBtn login">
+	<li class="sBtn login hide">
 	  <a href="#login" id="login" class="waves-effect">
 	    <i class="material-icons">person</i>Iniciar sesión
 	  </a>

@@ -186,3 +186,12 @@
   position:relative;
   top:7px;
 }
+
+@media screen and (max-width:340px){
+.rss{
+  font-size:2.2em;
+}
+.rsd{
+  font-size:2.3em;
+ }
+}

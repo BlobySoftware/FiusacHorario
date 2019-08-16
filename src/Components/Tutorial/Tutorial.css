@@ -136,6 +136,7 @@
   top:12px;
 }
 .rdds{
+  top:25px;
   background:var(--error);
 }
 .rdds span{
