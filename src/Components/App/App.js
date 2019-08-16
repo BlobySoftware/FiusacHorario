@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Sidenav from '../Sidenav/Sidenav';
 import Navbar from '../Navbar/Navbar';
-import Floating from '../Floating/Floating';
 import Calendar from '../Calendar/Calendar';
 import Home from '../Home/Home';
 import Search from '../Search/Search';
@@ -27,7 +26,6 @@ class App extends Component {
 	    </Switch>
           </div>
         </BrowserRouter>
-	<Floating icon="add"/>
       </main>
     )
   }

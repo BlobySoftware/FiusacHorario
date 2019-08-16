@@ -4,6 +4,7 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import './Navbar.css';
 import Tutorial from '../Tutorial/Tutorial';
 import CourseData from '../Calendar/courses.json';
+import Floating from '../Floating/Floating';
 
 class Navbar extends Component{
   constructor(props){
@@ -70,9 +71,9 @@ class Navbar extends Component{
     function hideSearch(){
        searchInput.style.display="none";
        searchInput.setAttribute('placeholder','')
-	shadow.style.opacity=0;                                      
+	shadow.style.opacity=0;
 	setTimeout(()=>{
-        cont.style.display="none";                                        
+        cont.style.display="none"; 
 	shadow.style.display="none";                                       
      },200);
     }
@@ -82,7 +83,9 @@ class Navbar extends Component{
       hideSearch();
     });
     searchInput.addEventListener('change',()=>{
-      setTimeout(()=>this.setState({redir:`/buscar/${searchInput.value}`}),200);
+      setTimeout(()=>{
+	if(searchInput.value.length > 2) this.setState({redir:`/buscar/${searchInput.value}`})
+      },10);
     });
     searchInput.addEventListener('search',()=>{
       hideSearch();
@@ -125,6 +128,7 @@ class Navbar extends Component{
     	    <li id="opTut"><a class="black-text waves-effect" href="#info">Información</a></li>
   	  </ul>
         </nav>
+	<Floating icon="add" action={this.openSearch}/>
 	<i class={this.state.tut?"material-icons closeT":"hide closeT"} onClick={this.closeTut}>close</i>
         {tutComp}
 	{this.state.redir!==false?<Redirect to={this.state.redir}/>:''}

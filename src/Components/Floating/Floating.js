@@ -3,6 +3,10 @@ import 'materialize-css/dist/css/materialize.min.css';
 import './Floating.css';
 
 class Floating extends Component{
+  componentDidMount(){
+    const btn = document.querySelector('.action');
+    btn.addEventListener('click',()=> this.props.action());
+  }
   render(){
     return(
       <div class="fixed-action-btn action">
