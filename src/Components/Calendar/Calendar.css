@@ -11,11 +11,9 @@
   position:relative;
 }
 #header > h3{
-  text-overflow:scale;
-  max-font-size:1.3em;
-  min-font-size:1em;
+  font-size:2.6em;
   font-weight:550;
-  line-height:25px;
+  line-height:20px;
   text-shadow:0 0 10px rgba(0,0,0,.3);
   transition:opacity 0.3s ease;
 }
@@ -86,11 +84,11 @@
   line-height:15px!important;
 }
 .rss{
-  font-size:2.3em;
+  font-size:2.3em!important;
   line-height:20px!important;
 }
 .rsd{
-  font-size:2.4em;
+  font-size:2.5em!important;
   line-height:22px!important;
 }
 #swipeArea{
@@ -219,9 +217,9 @@
 }
 @media screen and (max-width:340px){
 .rss{
-  font-size:2.2em;
+  font-size:10vw!important;
 }
 .rsd{
-  font-size:2.3em;
+  font-size:10vw!important;
  }
 }
