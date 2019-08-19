@@ -13,14 +13,14 @@
   position:relative;
   height:100%;
   left:0;
-  width:300%;
+  width:200%;
   overflow:scroll;
   display:flex;
   justify-content:flex-start;
   transition:left 0.3s ease;
 }
 .item{
-  width:calc(300% / 3);
+  width:calc(300% / 2);
   padding:30px 20px;
 }
 .item > h5{
@@ -93,13 +93,14 @@
 }
 #detailsTutorial > img{
   width:45%;
+  margin-bottom:5px;
 }
 #detailsTutorial > p{
-  text-align:right;
+  text-align:left;
   line-height:17px;
   color:var(--accent);
   opacity:0.6;
-  margin:5px 0 20px 0px;
+  margin:5px 0 20px 10px;
 }
 .yls{background:var(--warning);}
 .gls{background:var(--secondary);}
@@ -112,7 +113,7 @@
   transform:translateX(-50%);
   display:flex;
   justify-content:space-between;
-  width:40px;
+  width:27px;
   z-index:2;
 }
 #dots li i{

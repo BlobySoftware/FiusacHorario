@@ -3,6 +3,7 @@ import Course from '../Course/Course';
 import CourseExpanded from '../CourseExpanded/CourseExpanded';
 import CourseData from '../Calendar/courses.json';
 import 'materialize-css/dist/css/materialize.min.css';
+import notFound from './boxes.png';
 import './Search.css';
 
 class Search extends Component{
@@ -87,9 +88,9 @@ class Search extends Component{
 
     return(
       <div id="listOf">
-        <h3 id="srcTitle">Resultados de busqueda<br/><h4>Se a econtrado {this.current.length} {rss} en {laps}s</h4></h3>
+        <h3 id="srcTitle" class={this.current.length===0?'hide':'ss'}>Resultados de busqueda<br/><h4>Se a econtrado {this.current.length} {rss} en {laps}s</h4></h3>
         <div id={this.current.length===1?'allOneSrc':'allSrc'} ref={this.content}>
-	  <div class={this.current.length===1?'hide timeLine':'timeLine'}></div>
+	  <div class={this.current.length<=1?'hide timeLine':'timeLine'}></div>
           {this.current.map(e =>{
 	    let days = [e.domingo, e.lunes, e.martes, e.miercoles, e.jueves, e.viernes, e.sabado].map(e=>{if(e===undefined) return false;else return true});
 	    if(this.current.length === 1){
@@ -126,10 +127,13 @@ class Search extends Component{
            return undefined
 	  })}
 	<div class={this.current.length===0?'noRes':'hide'}>
-	  <h5><i class="material-icons">info_outline</i> No se encontraron resultados</h5>
-	  <p>Intenta buscando algo similar o algo nuevo. Algunos terminos de busqueda tienen un orden especifico, puedes verlo en el menu de información.</p>
+	  <img src={notFound} alt="Not found icon"/>
+	  <div>
+	   <h5>Upps! no hay resultados</h5>
+	    <p>No se encontraron resultados, Intenta buscar algo similar o algo nuevo.</p>
+	  </div>
 	</div>
-	<div class='rights'><p>FIUSAC Horario 2019 ®<br/>todos los derechos reservados.</p></div>
+	<div  class={this.current.length===0?'hide':'rights'}><p>FIUSAC Horario 2019 ®<br/>todos los derechos reservados.</p></div>
         </div>
       </div>
     )	  

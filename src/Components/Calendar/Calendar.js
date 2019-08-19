@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import SwipeListener from 'swipe-listener';
 import Logo from './fiusac.png';
+import Defs from './default.png';
 import CourseData from './courses.json';
+import Cloud from './cloud.png';
+import Empty from './empty.png';
 import Course from '../Course/Course';
 import './Calendar.css';                                                         
 import 'materialize-css/dist/css/materialize.min.css';
@@ -21,7 +24,6 @@ class Calendar extends Component{
     this.updateCourse = this.updateCourse.bind(this);
     this.allCt= React.createRef();
     this.tuto = React.createRef();
-    this.setCourses();
   }
 
   updateCourse (){
@@ -45,6 +47,7 @@ class Calendar extends Component{
   setCourses(){
     this.current = [];
     const courses = window.localStorage.getItem('courses')===null?[]:JSON.parse(window.localStorage.getItem('courses'));
+
     //Map courses to filter by code and section
     CourseData.map( (e,p)=>{
       return courses.map(i=>{
@@ -116,11 +119,13 @@ class Calendar extends Component{
 
   render(){
     //Parse dates format
+    this.setCourses();
     const year = this.state.normal.getFullYear();
     const today =  this.dd[this.state.normal.getDay()]
     const cMonth = this.months[this.state.normal.getMonth()];
     const tDate = this.state.normal.getDate();
     const def = this.current.length===0?true:false;
+
     let fails = 0;
     let counter = 0;
 
@@ -162,23 +167,28 @@ class Calendar extends Component{
 	 })}
 	  <div class={fails===this.current.length?'hide timeLine':'timeLine'}></div>
 	  <div id="emptyCourses" class={fails===this.current.length?'show':'hide'}>
-            <i class="material-icons">assignment_late</i>
-	    <p>Descansa, para hoy no tienes ningún curso asignado.</p>
+	    <img src={Empty} alt="Empty Courses"/>
+            <div>
+	      <h4>No tienes ningún curso asignado par hoy.</h4>
+	      <p>Puedes agregar mas utilizando el buscador o navegar para ver los cursos entre días.</p>
+	    </div>
 	  </div>
 	  <div class='rights'><p>FIUSAC Horario 2019 ®<br/>todos los derechos reservados.</p>
 	  </div>
         </section>
 	<div id="swipeArea"></div>
       </div>
-      <div class={def?'show':'hide'}>
+      <div class={def?'show defS':'hide'}>
 	<div class="default">
           <h4>No tienes cursos asignados</h4>
 	  <p>Puedes agregar los cursos que quieras con solo utilizar el buscador <i class="material-icons">search</i></p>
-	</div>
-	<div id="banner">
-	  <img src={Logo} alt='Default banner'/>
-	  <span>Cursos oficiales<br/>de la facultad.</span>
-	</div>
+	  <div id="banner">
+	    <img src={Logo} alt='Default banner'/>
+	    <span>Cursos oficiales<br/>de la facultad.</span>
+	  </div>
+        </div>
+	<img class="defs" src={Defs} alt="Not found"/>
+	<img class="defsCc" src={Cloud} alt="Not found cloud"/>
       </div>
       </div>
     );

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import SwipeListener from 'swipe-listener';
 import Course from '../Course/Course';
-import gest from './gesture.png'
-import detail from './details.jpg';
+import gest from './gesture.png';
 import './Tutorial.css';
 
 class Tutorial extends Component{
@@ -74,17 +73,6 @@ class Tutorial extends Component{
 	    <img src={gest} alt="Swipe Gesture" id="gest"/>
 	    <div id="block"></div>
 	  </div>
-	  <div class="item">
-	    <h4>Orden</h4>
-	    <p>Los cursos se muestran en un orden cronologico en cualquier seccion de la applicación, se ordenan de acuerdo a su hora inicio y no a su duración total.</p>
-	    <hr></hr>
-	    <h4>Detalles</h4>
-	    <p>Cada curso contiene información extra en su interior, estas tarjetas se encuentran en los cursos o en la caja busqueda.</p>
-	    <div id="detailsTutorial">
-	      <img src={detail} alt="CourseDetails"/>
-	      <p>Cuando presionas sobre un curso este abrira una nueva ventana con información mas detallada como:<br/><br/>Código del curso •<br/>Días del curso •<br/>Lugar del salón •<br/></p>
-	    </div>
-          </div>
 	  <div class="item bs">
 	    <h5>Buscador</h5>
 	    <hr></hr>
@@ -96,11 +84,7 @@ class Tutorial extends Component{
 	    <p><h4>Empieza a las</h4> "inicio (hh:mm)" <h4>termina a las</h4> "final (hh:mm)"</p>
 	    <div class="add">
 	      <i class="material-icons">info_outline</i><h4> Información importante</h4><br/>
-	      <span>La busqueda avanzada solo funciona si escribes el formato exactamente como se muestra, incluyendo acentos, y no agregues signos de puntuación como "_ - , :" etc.</span>
-	    </div>
-	    <div class="add rdds">
-	      <i class="material-icons">close</i><h4>Alerta de uso</h4><br/>
-	      <span>Esta es una version beta del buscador intenta buscar terminos especificos y NO  generales como : "mate, lab, practica" o palabras menores a 3 letras.</span>
+	      <span>La busqueda avanzada solo funciona si escribes el formato exactamente como se muestra, incluyendo acentos, y no agregues signos de puntuación como "_ - , :" etc. Itenta ser especifico y busca palabras con no menos de 3 letras.</span>
 	    </div>
 	  </div>
         </div>
