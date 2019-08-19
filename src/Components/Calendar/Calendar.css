@@ -11,7 +11,7 @@
   position:relative;
 }
 #header > h3{
-  font-size:2.6em;
+  font-size:2.8em;
   font-weight:550;
   line-height:20px;
   text-shadow:0 0 10px rgba(0,0,0,.3);
@@ -223,3 +223,12 @@
   font-size:10vw!important;
  }
 }
+@media screen and (max-width:330px){
+#header > h6{
+  font-size:2.45em!important;
+}
+.rss{
+  font-size:8.5vw!important;
+}
+}
+
