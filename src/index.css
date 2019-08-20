@@ -34,6 +34,6 @@ body {
   font-weight:500!important;
 }
 
-@media screen and (min-width:420px){
+@media screen and (min-width:620px){
   body{display:none;}
 }

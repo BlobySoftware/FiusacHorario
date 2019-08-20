@@ -115,8 +115,6 @@ class Calendar extends Component{
     });
   }
 
-  componentWillUnmount(){clearInterval(this.timer);}
-
   render(){
     //Parse dates format
     this.setCourses();
